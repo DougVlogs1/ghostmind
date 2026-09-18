@@ -75,6 +75,9 @@ export default function LessonPage() {
         setIsCompleted(true)
         setXpEarnedNotice(result.xpEarned)
         setTimeout(() => setXpEarnedNotice(null), 4500)
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('pense-brasil-xp-updated'))
+        }
       }
     } catch (err) {
       console.error('Erro ao salvar progresso:', err)
@@ -248,7 +251,7 @@ export default function LessonPage() {
           {/* Conteúdo Didático */}
           <div className="p-6 sm:p-10">
             <div
-              className="prose prose-slate max-w-none prose-headings:text-slate-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:border-b prose-h2:border-slate-100 prose-h2:pb-3 prose-h3:text-lg prose-h3:text-br-blue prose-p:text-slate-700 prose-p:leading-relaxed prose-li:text-slate-700 prose-strong:text-slate-900"
+              className="lesson-article max-w-none"
               dangerouslySetInnerHTML={{ __html: lesson.content }}
             />
 

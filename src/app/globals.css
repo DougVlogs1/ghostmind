@@ -18,7 +18,363 @@ body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-/* Custom scrollbar */
+/* ============================================================
+   SISTEMA TIPOGRÁFICO — ARTIGOS EDUCACIONAIS
+   Classe: .lesson-article
+   Aplicada ao <article> dentro de /lesson/[id]
+   ============================================================ */
+
+.lesson-article {
+  color: #1e293b;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  max-width: 72ch;
+}
+
+/* — Parágrafo — */
+.lesson-article p {
+  margin-bottom: 1.4rem;
+  line-height: 1.85;
+  color: #334155;
+}
+
+/* — Divisor horizontal — */
+.lesson-article hr {
+  border: none;
+  border-top: 2px solid #e2e8f0;
+  margin: 2.5rem 0;
+}
+
+/* — H2: Título de seção principal — */
+.lesson-article h2 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 2.5rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 3px solid var(--br-green);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.lesson-article h2:first-child {
+  margin-top: 0;
+}
+
+/* — H3: Subtítulo de seção — */
+.lesson-article h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--br-blue);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lesson-article h3::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 1.1em;
+  background: var(--br-green);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* — H4: Sub-subtítulo — */
+.lesson-article h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #334155;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+}
+
+/* — Listas — */
+.lesson-article ul,
+.lesson-article ol {
+  margin-bottom: 1.5rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.lesson-article ul li,
+.lesson-article ol li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.85rem;
+  color: #334155;
+  line-height: 1.75;
+}
+
+/* Bullet personalizado para <ul> */
+.lesson-article ul li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  color: var(--br-green);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Número com estilo para <ol> */
+.lesson-article ol {
+  counter-reset: lesson-counter;
+}
+
+.lesson-article ol li {
+  counter-increment: lesson-counter;
+}
+
+.lesson-article ol li::before {
+  content: counter(lesson-counter);
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  width: 1.35rem;
+  height: 1.35rem;
+  background: var(--br-blue);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-align: center;
+}
+
+/* — Negrito dentro de item de lista (label do conceito) — */
+.lesson-article li > strong:first-child {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+/* — Itálico (exemplos, fórmulas em linha) — */
+.lesson-article em {
+  font-style: normal;
+  background: #fef9c3;
+  color: #713f12;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.95em;
+  font-weight: 600;
+  border: 1px solid #fde68a;
+}
+
+/* — Strong em linha — */
+.lesson-article strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+/* ============================================================
+   COMPONENTES DE DESTAQUE EDUCACIONAL
+   ============================================================ */
+
+/* Caixa de Conceito-Chave */
+.lesson-article .callout-box {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-left: 4px solid var(--br-blue);
+  border-radius: 0 12px 12px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.lesson-article .callout-box::before {
+  content: "💡";
+  position: absolute;
+  top: -0.75rem;
+  left: 1rem;
+  background: white;
+  padding: 0 0.25rem;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.lesson-article .callout-box .callout-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--br-blue);
+  margin-bottom: 0.5rem;
+}
+
+.lesson-article .callout-box p {
+  margin-bottom: 0;
+  color: #1e3a5f;
+  font-size: 0.975rem;
+  line-height: 1.65;
+}
+
+/* Caixa de Atenção / Aviso */
+.lesson-article .callout-warning {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border-left: 4px solid #f59e0b;
+  border-radius: 0 12px 12px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.lesson-article .callout-warning::before {
+  content: "⚠️";
+  position: absolute;
+  top: -0.75rem;
+  left: 1rem;
+  background: white;
+  padding: 0 0.25rem;
+  font-size: 1.1rem;
+}
+
+.lesson-article .callout-warning .callout-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #92400e;
+  margin-bottom: 0.5rem;
+}
+
+.lesson-article .callout-warning p {
+  margin-bottom: 0;
+  color: #78350f;
+  font-size: 0.975rem;
+}
+
+/* Caixa de Fórmula / Dado Concreto */
+.lesson-article .formula-box {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem 1.75rem;
+  margin: 1.75rem 0;
+  font-family: 'Courier New', 'Monaco', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.02em;
+  border: 1px solid #334155;
+}
+
+.lesson-article .formula-box .formula-label {
+  display: block;
+  font-family: inherit;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+/* Comparação de dois lados (Verde/Vermelho) */
+.lesson-article .compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 640px) {
+  .lesson-article .compare-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lesson-article .compare-can {
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.lesson-article .compare-cannot {
+  background: #fff1f2;
+  border: 1.5px solid #fda4af;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.lesson-article .compare-can .compare-header {
+  color: #16a34a;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lesson-article .compare-cannot .compare-header {
+  color: #dc2626;
+  font-weight: 800;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lesson-article .compare-can ul,
+.lesson-article .compare-cannot ul {
+  margin-bottom: 0;
+}
+
+.lesson-article .compare-can ul li::before {
+  content: "✅";
+  color: unset;
+  font-size: 0.85rem;
+}
+
+.lesson-article .compare-cannot ul li::before {
+  content: "❌";
+  color: unset;
+  font-size: 0.85rem;
+}
+
+/* Tabela de Competências / Níveis */
+.lesson-article .tier-card {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.lesson-article .tier-card .tier-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.5rem;
+}
+
+.lesson-article .tier-card ul {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   CUSTOM SCROLLBAR
+   ============================================================ */
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

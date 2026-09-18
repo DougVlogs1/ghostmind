@@ -59,27 +59,42 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 1,
         content: `
           <h2>Poderes e Limitações do Presidente da República</h2>
-          <p>Na República Federativa do Brasil, o Presidente desempenha duas funções centrais: a de <strong>Chefe de Estado</strong> (representando o país perante as demais nações) e a de <strong>Chefe de Governo</strong> (liderando a administração pública federal e as políticas de governo).</p>
+          <div class="callout-box">
+            <div class="callout-title">Papel Constitucional na República</div>
+            <p>Na República Federativa do Brasil, o Presidente desempenha simultaneamente duas funções centrais de liderança: a de <strong>Chefe de Estado</strong> (representando a soberania do país perante as demais nações nas relações diplomáticas) e a de <strong>Chefe de Governo</strong> (liderando a administração pública federal e as políticas públicas no âmbito nacional).</p>
+          </div>
 
-          <h3>O que o Presidente PODE fazer:</h3>
-          <ul>
-            <li><strong>Executar leis e políticas públicas:</strong> Administrar os recursos federais e colocar em prática as diretrizes aprovadas em lei.</li>
-            <li><strong>Sancionar ou Vetar projetos de lei:</strong> Após aprovação pelo Congresso Nacional, o Presidente pode aprovar (sancionar) ou rejeitar total ou parcialmente (vetar) uma proposta.</li>
-            <li><strong>Editar Medidas Provisórias (MPs):</strong> Em situações de urgência e relevância, com força de lei imediata, com validade máxima de até 120 dias, dependendo de posterior aprovação do Congresso.</li>
-            <li><strong>Nomear ministros de Estado e dirigentes:</strong> Escolher a equipe ministerial e indicar ministros do STF e dirigentes de agências reguladoras (sujeito à sabatina e aprovação do Senado Federal).</li>
-            <li><strong>Comando supremo das Forças Armadas:</strong> Exercer a autoridade máxima sobre Exército, Marinha e Aeronáutica dentro dos preceitos constitucionais.</li>
-          </ul>
+          <p>Para manter o equilíbrio e evitar excessos de poder, a Constituição de 1988 estabelece claramente as prerrogativas e os limites intransponíveis do cargo:</p>
 
-          <h3>O que o Presidente NÃO PODE fazer:</h3>
-          <ul>
-            <li><strong>Criar leis sozinho:</strong> Não pode legislar arbitrariamente fora dos limites constitucionais. Leis ordinárias e complementares dependem do Congresso Nacional.</li>
-            <li><strong>Gastar sem previsão orçamentária:</strong> O Executivo só pode realizar despesas autorizadas pela Lei Orçamentária Anual (LOA) e leis de diretrizes aprovadas pelos parlamentares.</li>
-            <li><strong>Interferir em decisões judiciais:</strong> O Judiciário é independente. Decisões do STF e tribunais devem ser cumpridas pelo Poder Executivo.</li>
-            <li><strong>Fechar o Congresso ou dissolver tribunais:</strong> Atos contra o livre exercício dos poderes constituem crime de responsabilidade e atentado contra a ordem democrática.</li>
-          </ul>
+          <div class="compare-grid">
+            <div class="compare-can">
+              <div class="compare-header">Atribuições e Competências (Pode Fazer)</div>
+              <ul>
+                <li><strong>Executar leis e políticas públicas:</strong> Administrar os recursos federais e colocar em prática as diretrizes aprovadas em lei.</li>
+                <li><strong>Sancionar ou Vetar projetos de lei:</strong> Após aprovação pelo Congresso Nacional, o Presidente pode aprovar (sancionar) ou rejeitar total ou parcialmente (vetar) uma proposta.</li>
+                <li><strong>Editar Medidas Provisórias (MPs):</strong> Em situações de urgência e relevância, com força de lei imediata, com validade máxima de até 120 dias, dependendo de posterior aprovação do Congresso.</li>
+                <li><strong>Nomear ministros de Estado e dirigentes:</strong> Escolher a equipe ministerial e indicar ministros do STF e dirigentes de agências reguladoras (sujeito à sabatina e aprovação do Senado Federal).</li>
+                <li><strong>Comando supremo das Forças Armadas:</strong> Exercer a autoridade máxima sobre Exército, Marinha e Aeronáutica dentro dos preceitos constitucionais.</li>
+              </ul>
+            </div>
+            <div class="compare-cannot">
+              <div class="compare-header">Limites Constitucionais (Não Pode Fazer)</div>
+              <ul>
+                <li><strong>Criar leis sozinho:</strong> Não pode legislar arbitrariamente fora dos limites constitucionais. Leis ordinárias e complementares dependem exclusivamente do Congresso Nacional.</li>
+                <li><strong>Gastar sem previsão orçamentária:</strong> O Executivo só pode realizar despesas autorizadas pela Lei Orçamentária Anual (LOA) e leis de diretrizes aprovadas pelos parlamentares.</li>
+                <li><strong>Interferir em decisões judiciais:</strong> O Judiciário é independente. Decisões do STF e tribunais devem ser integralmente cumpridas pelo Poder Executivo.</li>
+                <li><strong>Fechar o Congresso ou dissolver tribunais:</strong> Atos contra o livre exercício dos poderes constituem crime de responsabilidade e grave atentado contra a ordem democrática.</li>
+              </ul>
+            </div>
+          </div>
+
+          <hr />
 
           <h3>O Sistema de Freios e Contrapesos (Checks and Balances)</h3>
-          <p>Nenhum governante possui poder irrestrito. Se o Presidente vetar uma lei por discordância política, o Congresso pode derrubar esse veto por maioria absoluta. Se editar um ato incompatível com a Carta Magna, o Supremo Tribunal Federal pode declará-lo inconstitucional.</p>
+          <div class="callout-warning">
+            <div class="callout-title">Princípio da Harmonia e Limitação de Poder</div>
+            <p>Nenhum governante possui poder irrestrito. Se o Presidente vetar uma lei por discordância política, o Congresso Nacional pode derrubar esse veto por maioria absoluta. Se o Presidente editar um decreto ou ato incompatível com a Carta Magna, o Supremo Tribunal Federal tem a autoridade de declará-lo inconstitucional e nulo de pleno direito.</p>
+          </div>
         `,
         questions: [
           {
@@ -118,28 +133,42 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 2,
         content: `
           <h2>A Tripartição de Poderes no Brasil</h2>
-          <p>Inspirada na teoria clássica de Montesquieu e inscrita no Artigo 2º da Constituição Federal de 1988, a organização do Estado brasileiro estabelece que são poderes da União, <strong>independentes e harmônicos entre si</strong>, o Legislativo, o Executivo e o Judiciário.</p>
+          <div class="callout-box">
+            <div class="callout-title">Artigo 2º da Constituição Federal de 1988</div>
+            <p>Inspirada na teoria clássica formulada por Montesquieu, a organização do Estado brasileiro estabelece que <strong>são poderes da União, independentes e harmônicos entre si, o Legislativo, o Executivo e o Judiciário</strong>. Cada um possui funções típicas (sua vocação principal) e funções atípicas (secundárias, para garantir autonomia mútua).</p>
+          </div>
 
-          <h3>1. Poder Legislativo (Congresso Nacional)</h3>
-          <p>Composto pela Câmara dos Deputados (representantes do povo) e pelo Senado Federal (representantes dos Estados e do DF).</p>
-          <ul>
-            <li><strong>Função típica:</strong> Propor, debater e aprovar leis, além de fiscalizar os atos do Executivo e gerenciar o orçamento nacional.</li>
-            <li><strong>Função atípica:</strong> Julgar o Presidente em processos de impeachment (Senado) e administrar sua própria estrutura interna.</li>
-          </ul>
+          <div class="tier-card">
+            <div class="tier-title">1. Poder Legislativo (Congresso Nacional)</div>
+            <p>Composto pela <strong>Câmara dos Deputados</strong> (que representa o povo) e pelo <strong>Senado Federal</strong> (que representa os 26 Estados federados e o Distrito Federal).</p>
+            <ul>
+              <li><strong>Função típica:</strong> Propor, debater e aprovar leis para o país, além de fiscalizar permanentemente as contas do Executivo e gerenciar o orçamento nacional.</li>
+              <li><strong>Função atípica:</strong> Julgar o Presidente da República e outras autoridades em processos de crime de responsabilidade/impeachment (Senado) e organizar sua administração interna.</li>
+            </ul>
+          </div>
 
-          <h3>2. Poder Executivo (Governo)</h3>
-          <p>Liderado pelo Presidente, Governadores e Prefeitos nos seus respectivos âmbitos.</p>
-          <ul>
-            <li><strong>Função típica:</strong> Administrar os serviços públicos essenciais (saúde, segurança, educação, infraestrutura) e executar as leis.</li>
-            <li><strong>Função atípica:</strong> Editar Medidas Provisórias com força de lei e regulamentar normas através de decretos.</li>
-          </ul>
+          <div class="tier-card">
+            <div class="tier-title">2. Poder Executivo (Governo e Administração)</div>
+            <p>Liderado pelo <strong>Presidente da República</strong> no âmbito federal, pelos <strong>Governadores</strong> nos estados e pelos <strong>Prefeitos</strong> nos municípios.</p>
+            <ul>
+              <li><strong>Função típica:</strong> Administrar os serviços públicos essenciais (saúde, segurança, educação, infraestrutura) e executar com eficiência as leis em vigor.</li>
+              <li><strong>Função atípica:</strong> Editar Medidas Provisórias com força temporária de lei e regulamentar normas gerais através de decretos executivos.</li>
+            </ul>
+          </div>
 
-          <h3>3. Poder Judiciário (Tribunais e Juízes)</h3>
-          <p>Formado pelo STF, STJ, Tribunais Regionais Federais, Tribunais de Justiça estaduais e juízes de direito.</p>
-          <ul>
-            <li><strong>Função típica:</strong> Julgar conflitos de interesses com base no ordenamento jurídico e assegurar o cumprimento da Constituição.</li>
-            <li><strong>Função atípica:</strong> Organizar seus próprios concursos públicos, orçamento interno e regimentos.</li>
-          </ul>
+          <div class="tier-card">
+            <div class="tier-title">3. Poder Judiciário (Tribunais e Magistratura)</div>
+            <p>Formado pelo <strong>STF, STJ, Tribunais Regionais Federais, Tribunais de Justiça estaduais e juízes de direito</strong>.</p>
+            <ul>
+              <li><strong>Função típica:</strong> Julgar conflitos de interesses e litígios com base no ordenamento jurídico vigente e assegurar a obediência irrestrita à Constituição.</li>
+              <li><strong>Função atípica:</strong> Organizar seus próprios concursos públicos de ingresso, administrar seu orçamento interno e formular seus regimentos.</li>
+            </ul>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">Equilíbrio Republicano</div>
+            <p>A independência não significa isolamento: os poderes devem conviver em constante harmonia. Nenhum poder pode se sobrepor aos demais nem usurpar competências alheias sem violar o pacto democrático.</p>
+          </div>
         `,
         questions: [
           {
@@ -166,15 +195,23 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 3,
         content: `
           <h2>O Rito do Processo Legislativo</h2>
-          <p>Criar uma lei no Brasil é um processo rigoroso com múltiplas fases de escrutínio para garantir debate democrático e respeito às garantias fundamentais.</p>
+          <div class="callout-box">
+            <div class="callout-title">O Que É o Processo Legislativo?</div>
+            <p>Criar uma lei no Brasil é um processo técnico e político rigoroso, estruturado em múltiplas fases de escrutínio para garantir o amplo debate democrático, a viabilidade orçamentária e o respeito rigoroso às garantias fundamentais da sociedade.</p>
+          </div>
 
           <ol>
-            <li><strong>Iniciativa:</strong> Quem pode propor uma lei? Parlamentares (deputados e senadores), Comissões do Congresso, Presidente da República, STF, PGR e os próprios cidadãos (Iniciativa Popular, cumprindo requisitos de assinaturas em múltiplos estados).</li>
-            <li><strong>Comissões Temáticas:</strong> O projeto é avaliado na Comissão de Constituição e Justiça (CCJ) para checar se viola a Constituição e em comissões técnicas (Educação, Finanças, Saúde).</li>
-            <li><strong>Votação em Plenário:</strong> Sendo aprovado na Casa iniciadora (geralmente a Câmara dos Deputados), segue para a Casa revisora (Senado Federal). Se sofrer alterações substanciais, retorna à primeira Casa.</li>
-            <li><strong>Sanção ou Veto Presidencial:</strong> O Presidente tem 15 dias úteis para sancionar (aprovar) ou vetar.</li>
-            <li><strong>Promulgação e Publicação:</strong> A lei promulgada ganha número oficial e é publicada no Diário Oficial da União (DOU) para ter vigência.</li>
+            <li><strong>Iniciativa:</strong> Quem pode propor uma nova lei? Parlamentares (deputados federais e senadores), Comissões temáticas do Congresso, o Presidente da República, o Supremo Tribunal Federal, a Procuradoria-Geral da República e os próprios cidadãos — por meio da <em>Iniciativa Popular</em>, que exige assinaturas de pelo menos 1% do eleitorado nacional distribuído por no mínimo cinco estados.</li>
+            <li><strong>Comissões Temáticas:</strong> O projeto de lei é encaminhado para comissões especializadas. Obrigatoriamente, passa pela <strong>Comissão de Constituição e Justiça (CCJ)</strong> para verificar se viola direitos constitucionais, e em seguida por comissões técnicas pertinentes (Educação, Finanças e Tributação, Saúde, Meio Ambiente).</li>
+            <li><strong>Votação em Plenário:</strong> Sendo aprovado nas comissões, o projeto é votado no Plenário da Casa iniciadora (geralmente a Câmara dos Deputados). Sendo aprovado, segue para a Casa revisora (o Senado Federal). Se o Senado fizer alterações substanciais no texto, o projeto retorna obrigatoriamente à Câmara para deliberação final.</li>
+            <li><strong>Sanção ou Veto Presidencial:</strong> Recebendo a proposta final aprovada pelas duas Casas, o Presidente da República dispõe de 15 dias úteis para <em>sancionar</em> (concordar e aprovar) ou <em>vetar</em> (rejeitar total ou parcialmente). O Congresso pode derrubar o veto em sessão conjunta por maioria absoluta.</li>
+            <li><strong>Promulgação e Publicação:</strong> Após a sanção (ou derrubada do veto), a nova lei é formalmente promulgada, ganha número de ordem e é publicada no <em>Diário Oficial da União (DOU)</em> para que passe a valer para todos os cidadãos.</li>
           </ol>
+
+          <div class="callout-warning">
+            <div class="callout-title">O Papel Guardião da CCJ</div>
+            <p>A Comissão de Constituição e Justiça e de Cidadania (CCJ) tem poder terminativo sobre a constitucionalidade: projetos que desrespeitem cláusulas pétreas da Constituição Federal são sumariamente arquivados antes mesmo de qualquer votação em plenário.</p>
+          </div>
         `,
         questions: [
           {
@@ -201,16 +238,55 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 4,
         content: `
           <h2>O Ciclo Orçamentário Brasileiro</h2>
-          <p>O orçamento não é uma decisão aleatória do governo; ele é estruturado em três leis interdependentes que tramitam periodicamente no Poder Legislativo:</p>
+          <div class="callout-box">
+            <div class="callout-title">A Tríade Orçamentária</div>
+            <p>O orçamento público no Brasil não decorre de decisões arbitrárias do governo de plantão; ele é rigorosamente estruturado através de <strong>três leis complementares e interdependentes</strong>, cuja elaboração compete ao Poder Executivo e cuja discussão e aprovação cabem ao Poder Legislativo.</p>
+          </div>
 
-          <ul>
-            <li><strong>PPA (Plano Plurianual):</strong> Estabelece diretrizes, objetivos e metas estratégicas de médio prazo para 4 anos de governo.</li>
-            <li><strong>LDO (Lei de Diretrizes Orçamentárias):</strong> Anual, faz o elo entre o PPA e o orçamento prático, definindo metas fiscais e prioridades.</li>
-            <li><strong>LOA (Lei Orçamentária Anual):</strong> O orçamento propriamente dito. Estima todas as receitas esperadas (impostos, taxas, contribuições) e fixa os limites de despesas para cada ministério e órgão no ano seguinte.</li>
-          </ul>
+          <div class="tier-card">
+            <div class="tier-title">1. PPA — Plano Plurianual (Horizonte de 4 Anos)</div>
+            <p>Estabelece as diretrizes estratégicas, objetivos de longo prazo e metas físicas da administração pública federal para um período de 4 anos. Sua vigência tem início no segundo ano de mandato de um presidente e se encerra no primeiro ano do governo seguinte, assegurando continuidade administrativa.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">2. LDO — Lei de Diretrizes Orçamentárias (Anual)</div>
+            <p>Apresentada anualmente, a LDO funciona como o elo prático entre o planejamento de médio prazo do PPA e a execução concreta da LOA. Ela define as metas fiscais, prioridades imediatas e regras para despesas com pessoal e endividamento.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">3. LOA — Lei Orçamentária Anual (O Orçamento Prático)</div>
+            <p>O orçamento detalhado em si. A LOA estima com precisão todas as receitas esperadas (impostos, tributos, contribuições e receitas patrimoniais) e fixa os limites máximos de gastos autorizados para cada ministério, tribunal e órgão público no ano seguinte.</p>
+          </div>
+
+          <hr />
 
           <h3>Despesas Obrigatórias vs. Despesas Discricionárias</h3>
-          <p>No Brasil, mais de 90% do orçamento federal é composto por <strong>despesas obrigatórias</strong> (previdência social, pagamento de folha de servidores, benefícios constitucionais, transferências constitucionais para estados e municípios). O governo administra apenas uma pequena fatia de <strong>despesas discricionárias</strong> (investimentos em novas obras, custeio de universidades, manutenção diária de órgãos).</p>
+          <p>Compreender essa distinção é fundamental para qualquer análise honesta das contas públicas:</p>
+
+          <div class="compare-grid">
+            <div class="compare-can">
+              <div class="compare-header">Despesas Obrigatórias (>90% do Orçamento)</div>
+              <ul>
+                <li><strong>Previdência e Benefícios Sociais:</strong> Pagamento de aposentadorias do INSS, pensões e BPC.</li>
+                <li><strong>Folha Salarial:</strong> Vencimentos de servidores públicos federais ativos e inativos.</li>
+                <li><strong>Pisos Constitucionais:</strong> Percentuais mínimos obrigatórios de repasse para Saúde e Educação.</li>
+                <li><strong>Obrigatoriedade legal:</strong> O governo é obrigado por lei a pagar pontualmente; não pode remanejar discricionariamente.</li>
+              </ul>
+            </div>
+            <div class="compare-cannot">
+              <div class="compare-header">Despesas Discricionárias (<10% do Orçamento)</div>
+              <ul>
+                <li><strong>Investimentos em Infraestrutura:</strong> Novas rodovias, ferrovias, portos e habitação popular.</li>
+                <li><strong>Custeio e Manutenção:</strong> Contas de energia de universidades, segurança e equipamentos de pesquisa.</li>
+                <li><strong>Margem de Ajuste:</strong> É a única fração que o governo consegue contingenciar ou cortar rapidamente quando as receitas caem.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">Rigidez Orçamentária e Reformas</div>
+            <p>Como mais de 90% dos recursos arrecadados já se encontram comprometidos com despesas obrigatórias fixadas por lei ou pela Constituição, governantes têm margem de manobra orçamentária muito reduzida, motivo pelo qual o debate econômico exige reformas estruturais profundas no Congresso.</p>
+          </div>
         `,
         questions: [
           {
@@ -237,18 +313,38 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 5,
         content: `
           <h2>Como os Votos se Transformam em Mandatos</h2>
-          <p>Nas eleições brasileiras existem dois sistemas fundamentais dependendo do cargo disputado:</p>
+          <div class="callout-box">
+            <div class="callout-title">A Engenharia Eleitoral Brasileira</div>
+            <p>No Brasil, o ato de votar se traduz em mandatos eletivos por meio de dois sistemas eleitorais distintos, desenhados para finalidades políticas diferentes: o <strong>Sistema Majoritário</strong> (para cargos executivos e senadores) e o <strong>Sistema Proporcional</strong> (para o parlamento e câmaras de vereadores).</p>
+          </div>
 
-          <h3>1. Sistema Majoritário (Vence quem tiver mais votos)</h3>
-          <p>Aplica-se à escolha de:</p>
-          <ul>
-            <li>Presidente da República, Governadores e Prefeitos (com 2º turno em cidades com mais de 200 mil eleitores se nenhum candidato alcançar 50% + 1 dos votos válidos).</li>
-            <li>Senadores da República (eleitos por maioria simples, com mandatos de 8 anos, renovando 1/3 e 2/3 a cada quatro anos).</li>
-          </ul>
+          <div class="tier-card">
+            <div class="tier-title">1. Sistema Majoritário — A Força da Maioria</div>
+            <p>Neste modelo, vence a disputa o candidato individual que obtiver o maior volume de votos válidos:</p>
+            <ul>
+              <li><strong>Poder Executivo (Presidente, Governadores e Prefeitos):</strong> Em cidades com mais de 200 mil eleitores e nas disputas estadual e federal, exige-se maioria absoluta (50% + 1 dos votos válidos). Caso nenhum alcance essa marca, ocorre segundo turno entre os dois mais votados.</li>
+              <li><strong>Senado Federal:</strong> Os senadores representam os estados de forma igualitária (3 por estado/DF). São eleitos por maioria simples, com mandatos de 8 anos, renovando alternadamente 1/3 e 2/3 da Casa a cada quatro anos.</li>
+            </ul>
+          </div>
 
-          <h3>2. Sistema Proporcional (Representação das correntes de opinião)</h3>
-          <p>Aplica-se à escolha de <strong>Deputados Federais, Deputados Estaduais e Vereadores</strong>. Aqui você vota não apenas no candidato, mas na legenda partidária.</p>
-          <p>As cadeiras no parlamento são distribuídas proporcionalmente ao total de votos recebidos pelo <strong>partido ou federação</strong> através do <em>Quociente Eleitoral (QE)</em> e <em>Quociente Partidário (QP)</em>. Por isso, um candidato com muitos votos individuais pode "puxar" colegas de legenda menos votados.</p>
+          <div class="tier-card">
+            <div class="tier-title">2. Sistema Proporcional — O Pluralismo de Ideias</div>
+            <p>Aplica-se à escolha de <strong>Deputados Federais, Deputados Estaduais e Vereadores</strong>. O objetivo constitucional é garantir que o parlamento espelhe a pluralidade de correntes de pensamento existentes na sociedade brasileira:</p>
+            <ul>
+              <li><strong>Voto na Legenda:</strong> O cidadão pode votar nominalmente no candidato ou digitar apenas a legenda do partido político.</li>
+              <li><strong>Distribuição das Vagas:</strong> As cadeiras não pertencem exclusivamente aos candidatos mais votados no cômputo geral, mas sim aos <em>partidos e federações</em> proporcionalmente ao total de votos recebidos pela sigla.</li>
+            </ul>
+          </div>
+
+          <div class="formula-box">
+            <span class="formula-label">Cálculo do Quociente Eleitoral (QE)</span>
+            QE = Total de Votos Válidos ÷ Total de Vagas da Casa Legislativa
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">O 'Efeito Puxador' de Votos</div>
+            <p>Por causa do Quociente Partidário, um candidato que receba centenas de milhares de votos individuais transfere o excedente de quociente para sua própria sigla partidária, permitindo que outros candidatos do mesmo partido ou federação sejam eleitos com votações menores.</p>
+          </div>
         `,
         questions: [
           {
@@ -287,31 +383,48 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 1,
         content: `
           <h2>A Federação Brasileira e a Divisão de Responsabilidades</h2>
-          <p>O Brasil é uma federação composta por três esferas autônomas de governo. Compreender essa divisão evita cobrar da autoridade errada o serviço público demandado:</p>
+          <div class="callout-box">
+            <div class="callout-title">O Pacto Federativo</div>
+            <p>O Brasil é uma República Federativa estruturada em três esferas político-administrativas autônomas e complementares. Compreender qual ente federado responde por cada demanda é essencial para exercer a cidadania e não cobrar a autoridade errada pelo serviço público que lhe é devido.</p>
+          </div>
 
-          <h3>1. Municípios (Prefeitos e Vereadores)</h3>
-          <ul>
-            <li>Educação infantil (creches) e ensino fundamental I.</li>
-            <li>Atenção básica em saúde (postos de saúde e UBS).</li>
-            <li>Transporte coletivo urbano, trânsito local e limpeza pública.</li>
-            <li>Plano diretor urbano, zoneamento e IPTU/ISS.</li>
-          </ul>
+          <div class="tier-card">
+            <div class="tier-title">1. Municípios (Prefeitos e Vereadores) — A Vida na Cidade</div>
+            <p>É a esfera mais próxima do dia a dia da população, responsável pelos serviços de impacto urbano imediato:</p>
+            <ul>
+              <li><strong>Educação:</strong> Educação infantil (creches e pré-escolas) e ensino fundamental I (1º ao 5º ano).</li>
+              <li><strong>Saúde Básica:</strong> Postos de saúde municipais, Unidades Básicas de Saúde (UBS) e agentes comunitários.</li>
+              <li><strong>Serviços Urbanos:</strong> Transporte coletivo municipal, iluminação pública, asfalto, coleta de lixo e saneamento.</li>
+              <li><strong>Ordenamento do Solo:</strong> Plano diretor municipal, zoneamento urbano e arrecadação de IPTU e ISS.</li>
+            </ul>
+          </div>
 
-          <h3>2. Estados (Governadores e Deputados Estaduais)</h3>
-          <ul>
-            <li>Segurança pública ostensiva e investigativa (Polícia Militar e Polícia Civil).</li>
-            <li>Ensino médio da rede pública.</li>
-            <li>Hospitais regionais de média e alta complexidade (SUS).</li>
-            <li>Gestão do ICMS e IPVA.</li>
-          </ul>
+          <div class="tier-card">
+            <div class="tier-title">2. Estados e Distrito Federal (Governadores e Deputados) — Serviços Regionais</div>
+            <p>Atuam na coordenação regional e na infraestrutura de médio e grande porte:</p>
+            <ul>
+              <li><strong>Segurança Pública:</strong> Policiamento ostensivo preventivo (Polícia Militar), polícia investigativa (Polícia Civil) e Corpo de Bombeiros.</li>
+              <li><strong>Educação Média:</strong> Ensino médio público e colégios técnicos estaduais.</li>
+              <li><strong>Saúde de Alta Complexidade:</strong> Gestão de hospitais regionais de trauma, emergências e especialidades do SUS.</li>
+              <li><strong>Tributação Estadual:</strong> Gestão e fiscalização do ICMS (sobre mercadorias e energia) e IPVA (veículos).</li>
+            </ul>
+          </div>
 
-          <h3>3. União (Governo Federal e Congresso)</h3>
-          <ul>
-            <li>Defesa nacional, fronteiras e segurança internacional (Polícia Federal, PRF e Forças Armadas).</li>
-            <li>Ensino superior (universidades e institutos federais).</li>
-            <li>Emissão de moeda, reservas cambiais e política monetária (Banco Central).</li>
-            <li>Regulação de telecomunicações, energia e transportes interestaduais.</li>
-          </ul>
+          <div class="tier-card">
+            <div class="tier-title">3. União (Governo Federal e Congresso Nacional) — Estratégia Soberana</div>
+            <p>Responsável pelos interesses nacionais, soberania externa e diretrizes macroeconômicas:</p>
+            <ul>
+              <li><strong>Defesa e Fronteiras:</strong> Forças Armadas (Exército, Marinha e Aeronáutica), Polícia Federal e Polícia Rodoviária Federal.</li>
+              <li><strong>Educação Superior:</strong> Universidades federais e Institutos Federais de Educação, Ciência e Tecnologia (IFs).</li>
+              <li><strong>Moeda e Macroeconomia:</strong> Emissão de moeda, gestão das reservas internacionais e política monetária através do Banco Central.</li>
+              <li><strong>Regulação Nacional:</strong> Telecomunicações, malha aérea, sistema elétrico interligado e rodovias federais (BRs).</li>
+            </ul>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">Cobrança Cidadã Correta</div>
+            <p>Reclamar com o Presidente da República ou nas redes sociais de Brasília sobre a falta de vagas em creches ou iluminação escura no bairro é ineficaz: tais serviços são obrigações orçamentárias exclusivas da prefeitura e da câmara municipal da sua cidade.</p>
+          </div>
         `,
         questions: [
           {
@@ -338,18 +451,43 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 2,
         content: `
           <h2>A Justiça e a Guarda da Constituição</h2>
-          <p>O Poder Judiciário tem por missão garantir a aplicação do ordenamento jurídico, assegurar os direitos dos cidadãos e solucionar litígios de forma imparcial.</p>
+          <div class="callout-box">
+            <div class="callout-title">A Função Jurisdicional</div>
+            <p>O Poder Judiciário tem como atribuição precípua aplicar a ordem jurídica com imparcialidade, dirimir litígios entre cidadãos ou entre cidadãos e o Estado, e salvaguardar os direitos e garantias fundamentais previstos na Constituição Federal de 1988.</p>
+          </div>
 
-          <h3>A Pirâmide do Judiciário Nacional:</h3>
-          <ul>
-            <li><strong>Juízes de Primeira Instância (Varas cíveis, criminais, trabalhistas):</strong> Onde os processos começam, ocorrem audiências e se colhem testemunhos.</li>
-            <li><strong>Segunda Instância (Tribunais de Justiça e TRFs):</strong> Analisam recursos contra sentenças de primeiro grau com colegiados de desembargadores.</li>
-            <li><strong>Tribunais Superiores (STJ, TST, TSE, STM):</strong> Padronizam a interpretação de leis federais.</li>
-            <li><strong>Supremo Tribunal Federal (STF):</strong> Composto por 11 ministros, é o guardião definitivo da Constituição da República.</li>
-          </ul>
+          <h3>A Pirâmide da Justiça Brasileira</h3>
+          <p>Para assegurar o direito à ampla defesa e ao duplo grau de jurisdição, as decisões judiciais tramitam por instâncias sucessivas:</p>
 
-          <h3>O que é o Controle de Constitucionalidade?</h3>
-          <p>Nenhuma lei aprovada pelo Congresso ou decreto do Presidente pode contrariar os direitos fundamentais inscritos na Carta de 1988. Através de ações diretas (ADI, ADC, ADPF), o STF verifica se uma norma respeita a Constituição, podendo anular leis ilegítimas.</p>
+          <div class="tier-card">
+            <div class="tier-title">1ª Instância — Onde a Lide Começa</div>
+            <p>Juízes de direito individuais em comarcas e varas (cíveis, criminais, de família, fazendárias e trabalhistas). É onde os processos nascem, provas são juntadas, testemunhas são ouvidas e a sentença inaugural é proferida.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">2ª Instância — Os Colegiados Recursais</div>
+            <p>Tribunais de Justiça estaduais (TJs) e Tribunais Regionais Federais (TRFs). As decisões são tomadas de forma colegiada por turmas ou câmaras de desembargadores, que revisam os recursos contra sentenças da primeira instância.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">Tribunais Superiores — Uniformização da Legislação Federal</div>
+            <p>Órgãos de cúpula temática sediados em Brasília: <strong>STJ</strong> (legislação federal infraconstitucional), <strong>TST</strong> (matéria trabalhista), <strong>TSE</strong> (normas eleitorais) e <strong>STM</strong> (justiça militar).</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">Supremo Tribunal Federal (STF) — O Guardião da Carta Magna</div>
+            <p>Composto por <strong>11 Ministros</strong> com sabatina obrigatória no Senado, é o tribunal de cúpula de todo o ordenamento jurídico nacional. Sua missão primordial é proteger e interpretar definitivamente a Constituição da República.</p>
+          </div>
+
+          <hr />
+
+          <h3>O Que É o Controle de Constitucionalidade?</h3>
+          <p>Nenhuma lei aprovada pelo Congresso Nacional, Assembleia Legislativa ou decreto do Presidente pode contrariar cláusulas pétreas ou direitos fundamentais da Constituição.</p>
+
+          <div class="callout-warning">
+            <div class="callout-title">Controle Concentrado de Constitucionalidade</div>
+            <p>Por meio de instrumentos de controle concentrado — como Ações Diretas de Inconstitucionalidade (ADI), Ações Declaratórias de Constitucionalidade (ADC) e Arguição de Descumprimento de Preceito Fundamental (ADPF) —, o STF tem o poder de anular normas incompatíveis com a Constituição, conferindo efeito vinculante para toda a administração pública.</p>
+          </div>
         `,
         questions: [
           {
@@ -376,10 +514,38 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 3,
         content: `
           <h2>A Administração Direta e Indireta</h2>
-          <p>Governar um país de mais de 200 milhões de habitantes exige órgãos especializados com autonomia técnica para proteger o cidadão contra abusos e falhas de mercado.</p>
+          <div class="callout-box">
+            <div class="callout-title">Estado vs. Governo</div>
+            <p>Enquanto os ministérios integram o <em>Governo</em> (com cargos políticos que mudam a cada eleição presidencial), grande parte dos serviços técnicos e das fiscalizações essenciais do país é exercida por órgãos autônomos de <em>Estado</em> pertencentes à administração indireta: as agências reguladoras e as autarquias.</p>
+          </div>
 
-          <h3>Agências Reguladoras (Estado, não Governo)</h3>
-          <p>Órgãos como <strong>Anvisa</strong> (saúde e medicamentos), <strong>Anatel</strong> (telecomunicações), <strong>Aneel</strong> (energia elétrica) e <strong>ANS</strong> (planos de saúde) possuem diretores com mandatos fixos. Sua missão é fiscalizar a prestação de serviços essenciais de forma técnica, independentemente de mudanças partidárias periódicas.</p>
+          <h3>O Papel Estratégico das Agências Reguladoras</h3>
+          <p>Com a privatização e a concessão de serviços públicos nas últimas décadas, o Estado transferiu a operação direta para consórcios privados, mantendo sobre si o papel indispensável de fiscalizar padrões de qualidade, segurança e preços justos para o consumidor:</p>
+
+          <div class="tier-card">
+            <div class="tier-title">Anvisa — Agência Nacional de Vigilância Sanitária</div>
+            <p>Fiscaliza e autoriza a fabricação e importação de medicamentos, vacinas, cosméticos, insumos médicos e padrões higiênico-sanitários de alimentos.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">Anatel — Agência Nacional de Telecomunicações</div>
+            <p>Regulamenta o setor de telecomunicações, define regras de cobertura 4G/5G, fiscaliza tarifas e zela pela qualidade do atendimento das operadoras de internet e telefonia.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">Aneel — Agência Nacional de Energia Elétrica</div>
+            <p>Audita geradoras e distribuidoras de energia elétrica, estabelece as bandeiras tarifárias e calcula os reajustes anuais das contas de luz no Brasil.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">ANS e ANTT — Saúde Suplementar e Transportes Terrestres</div>
+            <p>A <strong>ANS</strong> estabelece o rol de procedimentos obrigatórios dos planos de saúde privados; a <strong>ANTT</strong> fiscaliza o transporte rodoviário interestadual de passageiros e concessões de pedágio em rodovias federais.</p>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">Por Que os Diretores Têm Mandatos Fixos?</div>
+            <p>A legislação garante que os conselheiros das agências reguladoras possuam mandatos com estabilidade e períodos predeterminados, protegendo as decisões técnicas contra interferências e pressões políticas momentâneas do governante no poder.</p>
+          </div>
         `,
         questions: [
           {
@@ -406,12 +572,44 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 4,
         content: `
           <h2>Cidadania não termina no dia da votação</h2>
-          <p>O exercício cívico é diário. Todo cidadão brasileiro tem garantido por lei instrumentos poderosos para auditar o destino do dinheiro público:</p>
-          <ul>
-            <li><strong>Lei de Acesso à Informação (Lei nº 12.527/2011):</strong> Obriga órgãos públicos a responder pedidos de informação em até 20 dias (salvo sigilo legal justificado).</li>
-            <li><strong>Portais da Transparência:</strong> Ferramentas online onde qualquer pessoa pode consultar salários, contratos e licitações de prefeituras, estados e União.</li>
-            <li><strong>Ministério Público e Tribunais de Contas (TCU/TCE):</strong> Instituições que recebem denúncias fundadas de desvios e superfaturamentos para mover ações civis públicas.</li>
-          </ul>
+          <div class="callout-box">
+            <div class="callout-title">Cidadania Participativa e Fiscalização</div>
+            <p>O sufrágio nas urnas a cada dois anos é apenas a porta de entrada da democracia. O ordenamento jurídico brasileiro confere ao cidadão instrumentos legais de alta potência para monitorar a conduta dos agentes públicos e a aplicação de cada centavo arrecadado dos contribuintes.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">1. Lei de Acesso à Informação — LAI (Lei nº 12.527/2011)</div>
+            <p>Consagra o princípio fundamental de que <strong>a publicidade é a regra geral e o sigilo a exceção extrema</strong>:</p>
+            <ul>
+              <li>Qualquer pessoa (física ou jurídica) pode solicitar documentos, relatórios e demonstrativos de qualquer órgão municipal, estadual ou federal.</li>
+              <li>Não é exigido justificar o motivo nem a intenção do pedido.</li>
+              <li>O órgão tem prazo estipulado por lei de até <strong>20 dias corridos</strong> (prorrogáveis justificadamente por mais 10) para prestar as informações.</li>
+            </ul>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">2. Portais da Transparência Governamentais</div>
+            <p>Plataformas digitais públicas de livre acesso onde qualquer cidadão com internet pode auditar em tempo real:</p>
+            <ul>
+              <li>Remuneração detalhada e diárias de servidores públicos e detentores de mandato.</li>
+              <li>Editais de licitação, contratos públicos firmados e termos aditivos com fornecedores.</li>
+              <li>Repasses federais do Fundo de Participação dos Municípios (FPM) e emendas parlamentares.</li>
+            </ul>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">3. Órgãos de Controle Externo e Denúncia</div>
+            <p>Canais oficiais para formalização de denúncias fundamentadas:</p>
+            <ul>
+              <li><strong>Ministério Público (Estadual e Federal):</strong> Defensor dos interesses sociais indisponíveis e do patrimônio público, com prerrogativa de instaurar Inquéritos Civis e Ações de Improbidade.</li>
+              <li><strong>Tribunais de Contas (TCU e TCEs):</strong> Órgãos técnicos auxiliares do Legislativo encarregados de auditar a legalidade dos gastos governamentais.</li>
+            </ul>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">Como Apresentar Denúncias Efetivas</div>
+            <p>Denúncias genéricas baseadas em boatos costumam ser arquivadas. Para que uma representação tenha impacto real, anexe links de contratos, cópias de notas fiscais obtidas no portal da transparência ou fotografias comprovando a obra inacabada ou irregular.</p>
+          </div>
         `,
         questions: [
           {
@@ -449,18 +647,41 @@ export const educationalModules: EducationalModule[] = [
         duration: '25 min',
         orderIndex: 1,
         content: `
-          <h2>O que é Inflação e como ela afeta seu bolso</h2>
-          <p>A inflação não é apenas o aumento de um produto específico (como o tomate ou o combustível), mas a elevação generalizada e contínua do nível de preços de bens e serviços na economia, resultando na <strong>perda do poder aquisitivo da moeda</strong>.</p>
+          <h2>O Que É Inflação e Como Ela Afeta Seu Bolso</h2>
+          <div class="callout-box">
+            <div class="callout-title">Definição Macroeconômica</div>
+            <p>A inflação não é a alta isolada de um produto específico (como a gasolina ou a safra de tomates), mas a <strong>elevação generalizada, cumulativa e contínua do nível de preços</strong> de bens e serviços na economia, resultando na perda direta do poder aquisitivo da moeda ao longo do tempo.</p>
+          </div>
 
-          <h3>Como o Brasil mede a inflação?</h3>
-          <ul>
-            <li><strong>IPCA (Índice Nacional de Preços ao Consumidor Amplo):</strong> Calculado mensalmente pelo IBGE, mede a variação da cesta de consumo de famílias com renda entre 1 e 40 salários mínimos. É a meta oficial de inflação do país.</li>
-            <li><strong>INPC (Índice Nacional de Preços ao Consumidor):</strong> Focado em famílias com renda entre 1 e 5 salários mínimos, com maior peso em alimentação e transporte básico.</li>
-            <li><strong>IGP-M (Índice Geral de Preços do Mercado):</strong> Calculado pela FGV, muito utilizado em contratos de aluguel e fortemente influenciado pelo atacado e câmbio.</li>
-          </ul>
+          <h3>Como o Brasil Mede a Inflação Oficial?</h3>
+          <p>Diferentes institutos de pesquisa utilizam cestas de consumo e públicos-alvo distintos:</p>
 
-          <h3>Como se proteger da perda de poder de compra:</h3>
-          <p>Deixar o dinheiro parado na conta corrente ou guardado em espécie significa perder valor todo mês. Para preservar o patrimônio, seus recursos precisam render pelo menos uma taxa igual à inflação (ganho real zero) ou superior a ela (ganho real positivo), como em títulos públicos atrelados ao IPCA (Tesouro IPCA+).</p>
+          <div class="tier-card">
+            <div class="tier-title">IPCA — Índice Nacional de Preços ao Consumidor Amplo (IBGE)</div>
+            <p>Calculado mensalmente pelo IBGE, afere a variação de custos de famílias com renda entre <strong>1 e 40 salários mínimos</strong> nas principais regiões metropolitanas. É a métrica oficial utilizada pelo Conselho Monetário Nacional (CMN) e pelo Banco Central no regime de metas de inflação.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">INPC — Índice Nacional de Preços ao Consumidor (IBGE)</div>
+            <p>Focado em famílias com rendimento entre <strong>1 e 5 salários mínimos</strong>, cuja maior fatia do orçamento familiar é consumida por alimentação de subsistência e transporte público básico. Frequentemente utilizado como balizador de reajustes do salário mínimo e dissídios salariais.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">IGP-M — Índice Geral de Preços do Mercado (FGV)</div>
+            <p>Calculado pela Fundação Getulio Vargas, é composto por preços no atacado (60%), consumidor final (30%) e construção civil (10%). Por sofrer forte impacto das cotações internacionais e do dólar, historicamente serviu de base para reajustes de contratos de aluguel.</p>
+          </div>
+
+          <hr />
+
+          <div class="formula-box">
+            <span class="formula-label">Cálculo do Ganho Real nos Investimentos</span>
+            Ganho Real (%) ≈ Rendimento Nominal (%) - Taxa de Inflação (%)
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">O Imposto Invisível do Dinheiro Parado</div>
+            <p>Deixar reservas financeiras na conta-corrente tradicional ou na poupança com rendimentos inferiores ao IPCA significa assistir seu dinheiro desvalorizar mês a mês. Proteger o patrimônio exige aplicações que rendam, no mínimo, a inflação do período mais uma taxa de juro real (como o Tesouro IPCA+).</p>
+          </div>
         `,
         questions: [
           {
@@ -499,14 +720,42 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 2,
         content: `
           <h2>Juros: O Custo do Dinheiro no Tempo</h2>
-          <p>Quando você pega dinheiro emprestado, paga juros pelo privilégio de usar o capital de outrem hoje. Quando investe, você recebe juros pela renúncia de consumir hoje para disponibilizar o recurso no mercado.</p>
+          <div class="callout-box">
+            <div class="callout-title">O Preço da Renúncia e do Risco</div>
+            <p>Quando você contrata um empréstimo ou financiamento, paga juros pela antecipação de consumo com o capital alheio. Quando você investe, é remunerado com juros pela disciplina de adiar o consumo imediato e disponibilizar seu capital na economia.</p>
+          </div>
 
-          <h3>Juros Simples:</h3>
-          <p>Incidem sempre sobre o capital inicial original (fórmula: <em>J = C × i × t</em>). O crescimento é linear.</p>
+          <h3>A Diferença Entre Juros Simples e Juros Compostos</h3>
+          <p>O mecanismo matemático adotado define se o crescimento da dívida ou da aplicação será modesto ou avassalador:</p>
 
-          <h3>Juros Compostos (Juros sobre Juros):</h3>
-          <p>A taxa de juros incide sobre o capital inicial acrescido de todos os juros acumulados nos períodos anteriores (fórmula: <em>M = C × (1 + i)^t</em>). O crescimento é <strong>exponencial</strong>.</p>
-          <p>No longo prazo, os juros compostos são o maior aliado de quem investe com disciplina e o maior inimigo de quem contrai dívidas no cartão de crédito ou cheque especial.</p>
+          <div class="compare-grid">
+            <div class="compare-can">
+              <div class="compare-header">Juros Simples (Crescimento Linear)</div>
+              <ul>
+                <li><strong>Base de Cálculo:</strong> A taxa percentual incide unicamente sobre o capital inicial emprestado ao longo de todo o prazo.</li>
+                <li><strong>Fórmula Matemática:</strong> <em>J = C × i × t</em></li>
+                <li><strong>Comportamento:</strong> A quantia de juros acrescentada a cada mês permanece sempre fixa e previsível.</li>
+              </ul>
+            </div>
+            <div class="compare-cannot">
+              <div class="compare-header">Juros Compostos (Crescimento Exponencial)</div>
+              <ul>
+                <li><strong>Base de Cálculo:</strong> A taxa incide sobre o capital inicial somado aos juros acumulados nos meses anteriores ("juros sobre juros").</li>
+                <li><strong>Fórmula Matemática:</strong> <em>M = C × (1 + i)ᵗ</em></li>
+                <li><strong>Comportamento:</strong> No longo prazo, a curva de crescimento decola em ritmo geométrico.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="formula-box">
+            <span class="formula-label">Equação Fundamental dos Juros Compostos</span>
+            M = C × (1 + i)ᵗ
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">A Maior Força nos Investimentos e o Pior Veneno nas Dívidas</div>
+            <p>Nos investimentos com aportes constantes, os juros compostos são o maior aliado para a construção da independência financeira. Em contrapartida, no rotativo do cartão de crédito ou no cheque especial (onde as taxas ultrapassam 300% a 400% ao ano), os juros compostos multiplicam a dívida em efeito bola de neve destrutivo.</p>
+          </div>
         `,
         questions: [
           {
@@ -533,18 +782,31 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 3,
         content: `
           <h2>Entendendo o Custo Real do Crédito</h2>
-          <p>Muitas pessoas olham apenas para a "taxa de juros da parcela" de uma propaganda e ignoram o indicador mais importante: o <strong>Custo Efetivo Total (CET)</strong>.</p>
+          <div class="callout-box">
+            <div class="callout-title">O Conceito de CET (Custo Efetivo Total)</div>
+            <p>Ao contratar um financiamento de veículo, imóvel ou empréstimo pessoal, a esmagadora maioria dos consumidores olha apenas para a 'taxa de juros mensal da propaganda'. O indicador regulatório que realmente define o custo integral do contrato é o <strong>Custo Efetivo Total (CET)</strong>, fixado por determinação do Banco Central.</p>
+          </div>
 
-          <h3>O que compõe o CET?</h3>
-          <ul>
-            <li>Taxa nominal de juros do contrato.</li>
-            <li>Imposto sobre Operações Financeiras (IOF).</li>
-            <li>Tarifas de cadastro e abertura de crédito (TAC).</li>
-            <li>Seguros obrigatórios embutidos no financiamento.</li>
-          </ul>
+          <div class="tier-card">
+            <div class="tier-title">Composição Detalhada do CET</div>
+            <p>O CET consolida obrigatoriamente todas as despesas diretas e indiretas da operação financeira:</p>
+            <ul>
+              <li><strong>Taxa Nominal de Juros:</strong> O percentual de juros líquido cobrado pelo credor.</li>
+              <li><strong>Tributos Federais:</strong> O Imposto sobre Operações Financeiras (IOF) recolhido pela União.</li>
+              <li><strong>Tarifas Administrativas:</strong> Tarifas de abertura de crédito (TAC), custas de vistoria e emissão de carnê/boletos.</li>
+              <li><strong>Seguros Obrigatórios Embutidos:</strong> Seguros de proteção financeira ou de vida exigidos na concessão.</li>
+            </ul>
+          </div>
 
-          <h3>Regra de Ouro do Orçamento:</h3>
-          <p>As parcelas totais de dívidas de uma família (financiamentos, empréstimos, cartões) nunca devem comprometer mais de <strong>30% da sua renda líquida mensal</strong>. Acima desse patamar, qualquer imprevisto médico ou perda de emprego pode desestabilizar todo o patrimônio.</p>
+          <div class="formula-box">
+            <span class="formula-label">Regra de Ouro da Saúde Financeira</span>
+            Total de Parcelas de Crédito e Dívidas ≤ 30% da Renda Líquida Familiar
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">Limite Prudencial de Endividamento</div>
+            <p>Comprometer mais de 30% dos seus rendimentos líquidos mensais com empréstimos, financiamentos e parcelas de cartões retira qualquer margem de segurança do seu orçamento. Qualquer emergência imprevista — como problema de saúde ou perda de emprego — provocará inadimplência em cadeia.</p>
+          </div>
         `,
         questions: [
           {
@@ -571,20 +833,37 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 4,
         content: `
           <h2>O Primeiro e Mais Importante Investimento</h2>
-          <p>A Reserva de Emergência é o montante financeiro destinado exclusivamente a amortecer imprevistos inevitáveis: despesas médicas repentinas, conserto do carro de trabalho ou perda involuntária de renda.</p>
+          <div class="callout-box">
+            <div class="callout-title">O Conceito da Reserva de Emergência</div>
+            <p>A Reserva de Emergência não é uma aplicação para acumular riqueza ou comprar supérfluos; é uma <strong>blindagem de segurança psicológica e financeira</strong> criada especificamente para suportar acontecimentos imprevistos graves (despesas médicas urgentes, quebra do veículo de trabalho ou interrupção repentina de rendimentos).</p>
+          </div>
 
-          <h3>Quanto guardar?</h3>
-          <ul>
-            <li><strong>Assalariados com estabilidade / CLT:</strong> Entre 3 a 6 meses do custo de vida essencial.</li>
-            <li><strong>Autônomos, profissionais liberais e empreendedores:</strong> Entre 6 a 12 meses do custo de vida essencial, devido à maior volatilidade de receitas.</li>
-          </ul>
+          <h3>Quanto Você Deve Acumular?</h3>
+          <p>O montante ideal é calculado multiplicando o seu custo de vida básico mensal:</p>
 
-          <h3>Os Três Pilares da Reserva:</h3>
+          <div class="tier-card">
+            <div class="tier-title">Profissionais CLT e Servidores Públicos com Estabilidade</div>
+            <p>Recomenda-se entre <strong>3 e 6 meses</strong> do custo de sobrevivência essencial mensal, considerando a existência de seguro-desemprego, aviso prévio indenizado ou estabilidade funcional.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">Autônomos, Profissionais Liberais e Empreendedores</div>
+            <p>Recomenda-se entre <strong>6 e 12 meses</strong> do custo de sobrevivência essencial, dada a maior volatilidade no faturamento e a ausência de rede de proteção rescisória estatal.</p>
+          </div>
+
+          <hr />
+
+          <h3>Os Três Pilares Inegociáveis da Reserva</h3>
           <ol>
-            <li><strong>Segurança Máxima:</strong> Baixíssimo risco de perda do principal (ex: títulos soberanos federais ou CDBs com cobertura do FGC).</li>
-            <li><strong>Liquidez Imediata (D+0 ou D+1):</strong> O dinheiro deve poder ser resgatado a qualquer momento em que a emergência acontecer.</li>
-            <li><strong>Baixa Volatilidade:</strong> O saldo não pode oscilar negativamente dependendo do humor do mercado de ações.</li>
+            <li><strong>Segurança Máxima de Crédito:</strong> Aplicações emissores de altíssima solidez e baixíssimo risco de calote (como títulos do Tesouro Direto Selic ou CDBs pós-fixados emitidos por grandes bancos com garantia do FGC até o teto legal).</li>
+            <li><strong>Liquidez Imediata (D+0 ou D+1):</strong> Possibilidade de resgatar o capital a qualquer instante, inclusive nos fins de semana e feriados em caso de urgência médica.</li>
+            <li><strong>Baixíssima Volatilidade:</strong> A cota da aplicação não pode oscilar negativamente; o saldo precisa ser estritamente preservado.</li>
           </ol>
+
+          <div class="callout-warning">
+            <div class="callout-title">Não Busque Alta Rentabilidade na Reserva</div>
+            <p>O objetivo de uma reserva de emergência é conferir tranquilidade e liquidez, nunca multiplicar capital em apostas arriscadas. Jamais aloque a reserva em ações, fundos imobiliários com prazos de resgate longos ou criptoativos de alta oscilação.</p>
+          </div>
         `,
         questions: [
           {
@@ -611,13 +890,46 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 5,
         content: `
           <h2>Estruturando seu Dinheiro com Inteligência</h2>
-          <p>Não ter um plano para a renda significa que o dinheiro desaparecerá em pequenos gastos supérfluos cotidianos. Um modelo amplamente testado é a divisão orçamentária 50/30/20:</p>
+          <div class="callout-box">
+            <div class="callout-title">O Método Orçamentário 50/30/20</div>
+            <p>Sem um direcionamento consciente, a renda mensal tende a se esvair silenciosamente em pequenos desperdícios diários. O framework 50/30/20, consagrado internacionalmente, organiza seus rendimentos líquidos em três categorias claras e equilibradas.</p>
+          </div>
 
-          <ul>
-            <li><strong>50% para Necessidades Básicas:</strong> Moradia (aluguel/condomínio), alimentação essencial, contas de consumo (água, energia, gás, internet), saúde e transporte.</li>
-            <li><strong>30% para Estilo de Vida e Desejos:</strong> Lazer, restaurantes, viagens, assinaturas e compras pessoais.</li>
-            <li><strong>20% para Metas Financeiras e Futuro:</strong> Construção da reserva de emergência, quitação antecipada de dívidas e investimentos para a aposentadoria/independência financeira.</li>
-          </ul>
+          <div class="tier-card">
+            <div class="tier-title">50% — Necessidades Essenciais de Sobrevivência</div>
+            <p>Despesas indispensáveis sem as quais você não mantém sua integridade básica:</p>
+            <ul>
+              <li>Moradia: aluguel, condomínio, IPTU e manutenção indispensável da casa.</li>
+              <li>Alimentação básica de supermercado e feira (não inclui refeições em restaurantes caros).</li>
+              <li>Contas de utilidade pública: água, energia elétrica, gás e pacote básico de internet.</li>
+              <li>Saúde essencial (medicamentos contínuos ou plano de saúde) e transporte para o trabalho.</li>
+            </ul>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">30% — Estilo de Vida, Desejos e Lazer</div>
+            <p>Gastos que proporcionam qualidade de vida, equilíbrio mental e satisfação pessoal:</p>
+            <ul>
+              <li>Passeios, refeições sociais em restaurantes e viagens de férias.</li>
+              <li>Assinaturas de streaming, hobbies, compras pessoais e vestuário não essencial.</li>
+              <li>Cuidados estéticos e entretenimento com amigos e familiares.</li>
+            </ul>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">20% — Construção do Futuro e Liberdade Financeira</div>
+            <p>Recursos que constroem patrimônio e protegem o amanhã:</p>
+            <ul>
+              <li>Montagem e manutenção da sua reserva de emergência.</li>
+              <li>Amortização extraordinária e quitação antecipada de dívidas ativas.</li>
+              <li>Aportes mensais em investimentos diversificados para a aposentadoria e previdência.</li>
+            </ul>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">Adaptação à Realidade Individual</div>
+            <p>Se o seu momento econômico atual ainda não permite poupar 20%, comece com 5% ou 10%. O fator mais determinante para o sucesso a longo prazo é a consistência do hábito de investir todo mês antes de consumir o excedente.</p>
+          </div>
         `,
         questions: [
           {
@@ -656,13 +968,38 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 1,
         content: `
           <h2>A Métrica da Riqueza Nacional</h2>
-          <p>O <strong>Produto Interno Bruto (PIB)</strong> é a soma de todos os bens e serviços finais produzidos em um país durante determinado período (geralmente um trimestre ou ano). Ele mede o tamanho e a dinâmica da atividade econômica.</p>
+          <div class="callout-box">
+            <div class="callout-title">O Conceito de PIB</div>
+            <p>O <strong>Produto Interno Bruto (PIB)</strong> representa a soma monetária de todos os bens e serviços finais produzidos no território nacional durante determinado período (trimestre ou ano). É a principal régua utilizada no mundo para quantificar o tamanho, o dinamismo e a saúde da atividade econômica.</p>
+          </div>
 
-          <h3>A Ótica da Demanda (Como o PIB é calculado):</h3>
-          <p><em>PIB = Consumo das Famílias (C) + Investimentos Privados (I) + Gastos do Governo (G) + (Exportações - Importações)</em></p>
+          <h3>A Ótica da Demanda (Como o PIB é Mensurado)</h3>
+          <p>Existem diferentes métodos contábeis para medir o PIB. A mais comum é a ótica da despesa/demanda, decomposta em quatro grandes forças motrizes:</p>
 
-          <h3>PIB Total vs. PIB per capita:</h3>
-          <p>Um país com população enorme pode ter um PIB global volumoso, mas se a população for gigantesca, o <strong>PIB per capita</strong> (PIB dividido pelo número de habitantes) pode ser modesto. O PIB per capita é um indicador melhor do nível médio de produtividade e bem-estar material de uma sociedade.</p>
+          <div class="formula-box">
+            <span class="formula-label">Equação Fundamental do PIB (Ótica da Demanda)</span>
+            PIB = C + I + G + (X - M)
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">Componentes da Equação Econômica</div>
+            <ul>
+              <li><strong>C — Consumo das Famílias:</strong> Aquisição de bens duráveis, alimentos, vestuário e serviços de saúde/educação privada por cidadãos.</li>
+              <li><strong>I — Investimentos Privados (FBCF):</strong> Máquinas, plantas fabris, tecnologia e construção civil realizadas por empresas privadas.</li>
+              <li><strong>G — Gastos do Governo:</strong> Compras governamentais, obras públicas e contratação de serviços (não inclui transferências como aposentadorias para evitar dupla contagem).</li>
+              <li><strong>(X - M) — Balança Comercial Líquida:</strong> Exportações brasileiras (X) deduzidas das Importações de bens estrangeiros (M).</li>
+            </ul>
+          </div>
+
+          <hr />
+
+          <h3>PIB Total vs. PIB per Capita</h3>
+          <p>Um país populoso pode ostentar um PIB global imponente simplesmente pelo tamanho demográfico, enquanto a qualidade de vida de sua população permanece modesta. O indicador que reflete a produtividade média por cidadão é o <strong>PIB per capita</strong> (PIB total dividido pelo número de habitantes).</p>
+
+          <div class="callout-warning">
+            <div class="callout-title">Limitações Estatísticas do PIB</div>
+            <p>O PIB mede o fluxo de produção de mercado, mas não expressa a desigualdade de renda, o trabalho voluntário e doméstico não remunerado, nem a preservação do meio ambiente. Por essa razão, economistas combinam o PIB com o Índice de Desenvolvimento Humano (IDH) e o Coeficiente de Gini.</p>
+          </div>
         `,
         questions: [
           {
@@ -689,13 +1026,39 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 2,
         content: `
           <h2>O Termostato da Economia Brasileira</h2>
-          <p>A <strong>Taxa Selic</strong> é a taxa básica de juros da economia brasileira, fixada a cada 45 dias pelo Comitê de Política Monetária (COPOM) do Banco Central do Brasil.</p>
+          <div class="callout-box">
+            <div class="callout-title">O Que É a Taxa Selic?</div>
+            <p>A <strong>Taxa Selic</strong> (Sistema Especial de Liquidação e de Custódia) é a taxa básica de juros da economia brasileira. Fixada a cada 45 dias pelo <strong>COPOM (Comitê de Política Monetária do Banco Central)</strong>, ela funciona como o termostato de referência para todas as demais taxas bancárias de empréstimos, financiamentos e títulos públicos no país.</p>
+          </div>
 
-          <h3>O Ciclo da Política Monetária:</h3>
-          <ul>
-            <li><strong>Quando a inflação está alta:</strong> O Banco Central <em>eleva a Selic</em>. Com juros mais altos, o crédito fica mais caro, o consumo e os investimentos desaceleram, a demanda esfria e a pressão sobre os preços arrefece.</li>
-            <li><strong>Quando a economia está deprimida e a inflação controlada:</strong> O Banco Central <em>reduz a Selic</em>. O crédito fica mais acessível, estimulando famílias a consumir e empresas a investir e gerar empregos.</li>
-          </ul>
+          <h3>O Ciclo da Política Monetária na Prática</h3>
+          <p>O Banco Central ajusta a Selic para calibrar o ritmo de aquecimento da economia e manter a inflação na meta definida pelo Conselho Monetário Nacional:</p>
+
+          <div class="compare-grid">
+            <div class="compare-can">
+              <div class="compare-header">Quando a Inflação Sobe (Elevação da Selic)</div>
+              <ul>
+                <li><strong>Encarecimento do Crédito:</strong> Juros de empréstimos e cartões sobem em toda a rede bancária.</li>
+                <li><strong>Desaceleração do Consumo:</strong> Famílias compram menos a prazo e adiam trocas de carro ou imóvel.</li>
+                <li><strong>Incentivo à Poupança:</strong> Investimentos em renda fixa tornam-se mais atraentes que consumir hoje.</li>
+                <li><strong>Queda da Inflação:</strong> Com menor demanda na ponta final, lojistas e fabricantes são forçados a frear reajustes de preços.</li>
+              </ul>
+            </div>
+            <div class="compare-cannot">
+              <div class="compare-header">Quando a Economia Esfria (Corte da Selic)</div>
+              <ul>
+                <li><strong>Barateamento do Crédito:</strong> Financiamentos e empréstimos tornam-se mais acessíveis.</li>
+                <li><strong>Aceleração dos Negócios:</strong> Empresas tomam crédito para expandir frotas, abrir lojas e contratar operários.</li>
+                <li><strong>Aquecimento do Consumo:</strong> As famílias voltam a financiar bens e serviços essenciais e duráveis.</li>
+                <li><strong>Crescimento do PIB:</strong> A economia ganha tração e gera postos de trabalho formais.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">O Efeito Defasado da Selic</div>
+            <p>Alterações na Taxa Selic demoram de 6 a 18 meses para se propagar integralmente por toda a economia real. Por isso, as decisões do Banco Central são eminentemente técnicas e baseadas em projeções futuras, nunca em reações impulsivas imediatas.</p>
+          </div>
         `,
         questions: [
           {
@@ -722,8 +1085,33 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 3,
         content: `
           <h2>Por que o Dólar afeta quem nunca saiu do Brasil</h2>
-          <p>O Brasil adota o regime de <strong>câmbio flutuante</strong>, no qual o preço do dólar varia conforme a oferta e a demanda internacional de moeda.</p>
-          <p>Mesmo bens produzidos nacionalmente têm preços atrelados a commodities cotadas em dólar: o trigo (base do pão francês), a soja (alimentação de aves e suínos), o petróleo (gasolina e diesel do frete) e insumos agrícolas (fertilizantes importados). Uma alta acentuada do dólar encarece toda a cadeia de suprimentos interna.</p>
+          <div class="callout-box">
+            <div class="callout-title">O Regime de Câmbio Flutuante</div>
+            <p>Desde 1999, o Brasil adota o regime de <strong>câmbio flutuante</strong>, no qual a cotação do dólar oscila livremente conforme a oferta e procura internacional de divisas (fluxos comerciais de exportação/importação e investimentos externos).</p>
+          </div>
+
+          <h3>Como a Moeda Americana Penetra o Seu Supermercado</h3>
+          <p>Muitas pessoas acreditam que a oscilação do dólar afeta apenas quem faz viagens internacionais. Na realidade, a moeda norte-americana é a unidade padrão de precificação de commodities essenciais à vida de todo brasileiro:</p>
+
+          <div class="tier-card">
+            <div class="tier-title">1. O Trigo e o Pão Francês</div>
+            <p>O Brasil importa parcela significativa do trigo que consome (principalmente da Argentina e América do Norte). Se o dólar sobe, o moinho paga mais pela saca, a farinha sobe e a padaria é obrigada a reajustar o pãozinho e o macarrão.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">2. Combustíveis e o Custo do Frete (Diesel)</div>
+            <p>O petróleo é cotado em dólares nas bolsas globais. Quando a moeda americana dispara, o diesel e a gasolina no Brasil sobem, encarecendo o frete rodoviário de caminhões que abastecem os centros urbanos com frutas, legumes e carnes.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">3. Fertilizantes e Insumos Agrícolas</div>
+            <p>Mais de 80% dos fertilizantes químicos utilizados pelo agronegócio nacional para produzir soja, milho e arroz são importados e pagos em moeda estrangeira.</p>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">O Fenômeno do Pass-Through Cambial</div>
+            <p>Economistas chamam de <em>pass-through</em> a velocidade e intensidade com que a desvalorização da moeda doméstica (o real) se transfere para os índices de inflação locais (IPCA), reduzindo o poder de compra do cidadão comum.</p>
+          </div>
         `,
         questions: [
           {
@@ -750,8 +1138,33 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 4,
         content: `
           <h2>Como os Salários Reais Realmente Crescem</h2>
-          <p>Aumentar salários por decreto sem aumento de produção gera apenas inflação e desemprego. O único motor duradouro de enriquecimento de uma sociedade é o <strong>crescimento da produtividade</strong> (produzir mais e melhor com a mesma quantidade de recursos e tempo).</p>
-          <p>A produtividade depende de: capital humano (educação de qualidade e qualificação técnica), investimento em tecnologia e infraestrutura logística (estradas, portos e ferrovias eficientes) e segurança jurídica para investimentos de longo prazo.</p>
+          <div class="callout-box">
+            <div class="callout-title">O Motor da Renda Real: A Produtividade</div>
+            <p>Governos não criam riqueza por decreto legislativo ou através da impressão descontrolada de cédulas. A única fórmula comprovada na história mundial capaz de gerar aumentos reais, contínuos e sustentáveis de salário sem inflação é o <strong>aumento da produtividade do trabalho</strong> (a capacidade de gerar mais valor com o mesmo dispêndio de horas e insumos).</p>
+          </div>
+
+          <h3>Os Três Pilares da Produtividade Econômica</h3>
+          <p>Para que um trabalhador produza mais e seja remunerado com salários superiores, um país precisa fortalecer três alicerces estruturantes:</p>
+
+          <div class="tier-card">
+            <div class="tier-title">1. Capital Humano e Qualificação Técnica</div>
+            <p>Educação básica de excelência, alfabetização plena na idade certa e formação técnica alinhada às demandas da indústria moderna e dos serviços de alta tecnologia.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">2. Inovação Tecnológica e Maquinário</div>
+            <p>Empresas equipadas com maquinário moderno, softwares de automação, conectividade 5G e processos industriais eficientes multiplicam a capacidade de produção de cada trabalhador.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">3. Infraestrutura Logística e Segurança Jurídica</div>
+            <p>Ferrovias, portos ágeis e rodovias bem pavimentadas reduzem o chamado "Custo Brasil", enquanto regras contratuais estáveis atraem investimentos fabris de longo prazo.</p>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">A Falsa Ilusão do Salário Nominal</div>
+            <p>Se os salários nominais de uma categoria sobem 20%, mas a produção de bens permanece exatamente igual, os preços no comércio subirão os mesmos 20% para equilibrar a oferta, anulando qualquer ganho real de poder aquisitivo.</p>
+          </div>
         `,
         questions: [
           {
@@ -778,14 +1191,37 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 5,
         content: `
           <h2>Para onde vão os Tributos Brasileiros?</h2>
-          <p>O Estado arrecada recursos da sociedade para financiar bens públicos que o mercado sozinho não proveria de forma universal: segurança pública, judiciário, malha viária, diplomacia, fiscalização e proteção social aos mais vulneráveis.</p>
+          <div class="callout-box">
+            <div class="callout-title">A Justificativa da Tributação</div>
+            <p>Em qualquer sociedade moderna e civilizada, o Estado arrecada tributos compulsórios dos cidadãos e das empresas para custear a oferta de bens públicos universais: soberania e segurança pública, ordenamento judiciário, malha de transportes, diplomacia, fiscalização e a rede de proteção social aos indivíduos em situação de vulnerabilidade.</p>
+          </div>
 
-          <h3>Tributação Direta vs. Indireta:</h3>
-          <ul>
-            <li><strong>Impostos Diretos (sobre renda e patrimônio):</strong> IRPF, IPTU, IPVA. Identificam quem tem maior capacidade de pagar.</li>
-            <li><strong>Impostos Indiretos (sobre o consumo de bens e serviços):</strong> ICMS, IPI, PIS/Cofins, ISS. São cobrados na nota fiscal do produto.</li>
-          </ul>
-          <p>No Brasil, a alta concentração de tributos sobre o consumo torna o sistema <em>regressivo</em>: o cidadão de baixa renda gasta uma proporção muito maior do seu salário pagando impostos sobre arroz, feijão e luz do que o cidadão de alta renda.</p>
+          <h3>Tributação Direta vs. Tributação Indireta</h3>
+          <p>A arquitetura tributária divide-se em duas modalidades fundamentais com impactos distributivos inteiramente distintos:</p>
+
+          <div class="compare-grid">
+            <div class="compare-can">
+              <div class="compare-header">Tributação Direta (Sobre Renda e Patrimônio)</div>
+              <ul>
+                <li><strong>Identificação Clara:</strong> Incide nominalmente sobre quem gera riqueza ou é proprietário de bens (ex: IRPF, IPTU, IPVA).</li>
+                <li><strong>Capacidade Contributiva:</strong> Permite adotar alíquotas progressivas (quem ganha mais recolhe uma alíquota percentual superior).</li>
+                <li><strong>Transparência:</strong> O contribuinte sabe com precisão cirúrgica o volume recolhido para o erário público.</li>
+              </ul>
+            </div>
+            <div class="compare-cannot">
+              <div class="compare-header">Tributação Indireta (Sobre Consumo de Bens e Serviços)</div>
+              <ul>
+                <li><strong>Embutida nos Preços:</strong> Vem ocultada na nota fiscal do supermercado, energia e remédios (ex: ICMS, PIS/Cofins, IPI, ISS).</li>
+                <li><strong>Alíquota Uniforme:</strong> Um milionário e um trabalhador desempregado pagam exatamente o mesmo imposto em reais sobre um quilo de alimento.</li>
+                <li><strong>Efeito Regressivo:</strong> Penaliza desproporcionalmente as classes de menor poder aquisitivo.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">A Regressividade Tributária no Brasil</div>
+            <p>Diferentemente dos países desenvolvidos da OCDE (onde a tributação foca na renda e patrimônio), no Brasil mais da metade de tudo que é arrecadado incide sobre o consumo. Como os cidadãos de menor renda gastam quase 100% dos seus rendimentos na subsistência diária, comprometem uma fatia percentual muito maior de sua renda sustentando impostos indiretos.</p>
+          </div>
         `,
         questions: [
           {
@@ -824,15 +1260,34 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 1,
         content: `
           <h2>A Linha Divisória entre o Real e o Julgamento Pessoal</h2>
-          <p>Em tempos de redes sociais e polarização, confundir <strong>fatos</strong> com <strong>opiniões</strong> é a causa primordial da desinformação.</p>
+          <div class="callout-box">
+            <div class="callout-title">O Alicerce do Pensamento Crítico</div>
+            <p>Na era das redes sociais e da polarização algorítmica, a confusão deliberada ou involuntária entre <strong>fatos verificáveis</strong> e <strong>opiniões subjetivas</strong> tornou-se a raiz primordial da disseminação de desinformação no debate cívico.</p>
+          </div>
 
-          <h3>1. O que é um Fato?</h3>
-          <p>Uma declaração sobre a realidade objetiva que pode ser <em>comprovada ou refutada</em> empiricamente com evidências, medições ou registros históricos.</p>
-          <p><em>Exemplo:</em> "A taxa de desemprego medida pelo IBGE no trimestre foi de 7,5%." (Pode ser verificado nos dados oficiais).</p>
+          <div class="compare-grid">
+            <div class="compare-can">
+              <div class="compare-header">O Que É um Fato? (Objetivo)</div>
+              <ul>
+                <li><strong>Comprovação Empírica:</strong> Uma afirmação descritiva sobre a realidade material que pode ser rigorosamente confirmada ou refutada com dados, medições ou documentos.</li>
+                <li><strong>Independência:</strong> O fato independe da vontade, credo ou preferência de quem o declara.</li>
+                <li><strong>Exemplo Concreto:</strong> <em>"O PIB brasileiro expandiu 2,9% em 2023 de acordo com o relatório oficial do IBGE."</em></li>
+              </ul>
+            </div>
+            <div class="compare-cannot">
+              <div class="compare-header">O Que É uma Opinião? (Subjetiva)</div>
+              <ul>
+                <li><strong>Juízo de Valor:</strong> Uma interpretação individual, avaliação moral, crença ideológica ou preferência pessoal sobre determinado acontecimento.</li>
+                <li><strong>Pluralidade:</strong> Pessoas bem intencionadas podem sustentar opiniões antagônicas diante de um mesmo conjunto de fatos.</li>
+                <li><strong>Exemplo Concreto:</strong> <em>"Essa taxa de crescimento é pífia e prova a incompetência das políticas econômicas vigentes."</em></li>
+              </ul>
+            </div>
+          </div>
 
-          <h3>2. O que é uma Opinião?</h3>
-          <p>Uma interpretação subjetiva, juízo moral, crença ou preferência pessoal que varia de pessoa para pessoa.</p>
-          <p><em>Exemplo:</em> "Essa taxa de desemprego é inaceitável e demonstra a incompetência do ministro." (Expressa um julgamento de valor político, não uma medição pura).</p>
+          <div class="callout-warning">
+            <div class="callout-title">A Falsa Equivalência no Debate</div>
+            <p>Você tem pleno direito à sua própria opinião moral ou ideológica, mas não tem direito aos seus próprios fatos. Debater a melhor solução política é salutar; negar dados estatísticos e científicos consolidados desonra o diálogo democrático.</p>
+          </div>
         `,
         questions: [
           {
@@ -858,15 +1313,38 @@ export const educationalModules: EducationalModule[] = [
         duration: '25 min',
         orderIndex: 2,
         content: `
-          <h2>Desarmando Truques de Debate</h2>
-          <p>Uma falácia lógica é um argumento com falha estrutural de raciocínio, frequentemente usado para convencer sem embasamento válido:</p>
+          <h2>Desarmando Truques de Debate e Retórica Enganosa</h2>
+          <div class="callout-box">
+            <div class="callout-title">O Que É uma Falácia Lógica?</div>
+            <p>Uma falácia lógica é um argumento que parece persuasivo na superfície, mas contém uma quebra fundamental nas regras de inferência racional, sendo comumente utilizado na política e na publicidade para manipular a opinião pública sem apresentar mérito substantivo.</p>
+          </div>
 
-          <ul>
-            <li><strong>Ad Hominem (Ataque à Pessoa):</strong> Em vez de refutar o argumento ou os dados apresentados, ataca-se o caráter, o passado ou a identidade de quem fala.</li>
-            <li><strong>Falácia do Espantalho:</strong> Distorcer, exagerar ou simplificar grosseiramente a posição do adversário para atacar essa versão caricata fácil de derrubar.</li>
-            <li><strong>Falsa Dicotomia (8 ou 80):</strong> Apresentar apenas dois caminhos extremos opostos ("Ou você apoia minha proposta integralmente ou você odeia o Brasil!"), omitindo as dezenas de alternativas moderadas existentes.</li>
-            <li><strong>Apelo à Emoção:</strong> Apelar para o medo, a raiva ou a piedade desmedida para forçar uma conclusão sem expor dados lógicos.</li>
-          </ul>
+          <h3>As Quatro Falácias Mais Frequentes no Debate Político</h3>
+
+          <div class="tier-card">
+            <div class="tier-title">1. Falácia Ad Hominem (Ataque Pessoal à Pessoa)</div>
+            <p>Em vez de analisar os méritos, dados ou premissas do argumento apresentado, o debatedor agride a reputação, idade, escolaridade, moral ou aparência física do adversário. <em>Exemplo: "Não ouçam as propostas orçamentárias do economista Y porque ele é jovem e arrogante."</em></p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">2. Falácia do Espantalho (Distorção Caricata)</div>
+            <p>Consiste em simplificar grosseiramente, exagerar ou desfigurar a posição do outro debatedor até transformá-la em uma caricatura absurda, fácil de ser desmoralizada perante a plateia. <em>Exemplo: "Quem defende fiscalização ambiental quer que todos os fazendeiros morram de fome."</em></p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">3. Falácia da Falsa Dicotomia (8 ou 80)</div>
+            <p>Reduz uma questão complexa com dezenas de alternativas moderadas a apenas dois caminhos extremos mutuamente excludentes. <em>Exemplo: "Ou você apoia 100% da minha medida fiscal ou você quer a destruição completa do Brasil!"</em></p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">4. Falácia do Apelo à Emoção (Medo ou Piedade)</div>
+            <p>Substitui o encadeamento causal e as estatísticas por narrativas de choque, terror ou piedade desmedida para forçar a adesão impulsiva do público sem que haja provas lógicas.</p>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">Como Blindar Sua Mente</div>
+            <p>Sempre que se deparar com uma discussão inflamada, separe o interlocutor da tese apresentada: avalie se os argumentos se sustentam logicamente por si sós, mesmo que fossem enunciados por alguém de quem você discorda politicamente.</p>
+          </div>
         `,
         questions: [
           {
@@ -893,14 +1371,24 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 3,
         content: `
           <h2>O Método dos Checadores Profissionais</h2>
-          <p>Quando receber uma notícia bombástica que desperte fortes emoções (raiva, indignação ou euforia triunfante), aplique imediatamente o método da <strong>Leitura Lateral</strong>:</p>
+          <div class="callout-box">
+            <div class="callout-title">A Técnica da Leitura Lateral</div>
+            <p>Desenvolvida e aperfeiçoada por jornalistas de <em>fact-checking</em> em universidades de prestígio, a <strong>Leitura Lateral</strong> preconiza que, ao ler uma publicação alarmante nas redes sociais, você NUNCA deve ficar preso na mesma página ou print, mas abrir abas paralelas de navegação para checar a credibilidade das fontes e o contexto integral do evento.</p>
+          </div>
+
+          <h3>Protocolo em 4 Etapas para Verificação de Informações</h3>
 
           <ol>
-            <li><strong>Não leia apenas a página ou print recebido:</strong> Abra uma nova aba no navegador e pesquise os termos-chave do evento.</li>
-            <li><strong>Verifique a fonte primária:</strong> A reportagem cita um documento oficial, um processo judicial ou um artigo científico? Vá direto à fonte original para ver se a citação não foi distorcida.</li>
-            <li><strong>Cheque agências de fact-checking:</strong> Agências profissionais de verificação (Lupa, Aos Fatos, Fato ou Boato) já analisaram o caso?</li>
-            <li><strong>Cuidado com manchetes apelativas e clickbait:</strong> Muitas vezes o título mente para atrair cliques, contradizendo o próprio corpo da matéria.</li>
+            <li><strong>Saia Imediatamente da Postagem Original:</strong> Abra uma nova aba no seu navegador e busque as palavras-chave do ocorrido em ferramentas de busca respeitadas. Se uma bomba política ocorreu, veículos de imprensa profissionais com equipes no Congresso já estarão cobrindo o fato com detalhes apurados.</li>
+            <li><strong>Exija e Consulte a Fonte Primária:</strong> Se a notícia cita um acórdão do STF, uma instrução da Receita Federal ou um artigo científico internacional, busque o documento original oficial. Frequentemente, frases soltas são tiradas de contexto para inverter totalmente o sentido da decisão original.</li>
+            <li><strong>Consulte Agências de Fact-Checking Profissionais:</strong> Agências especializadas (como Agência Lupa, Aos Fatos, Fato ou Boato e Comprova) possuem equipes dedicadas a rastrear imagens adulteradas, declarações forjadas e vídeos antigos reciclados fora de época.</li>
+            <li><strong>Desconfie de Títulos Sensacionalistas e Manchetes Caça-Cliques (Clickbait):</strong> Muitas vezes, o título de uma matéria nas redes sociais é redigido de forma agressiva para provocar engajamento, mas o próprio corpo do texto esclarece que a realidade é muito mais ponderada.</li>
           </ol>
+
+          <div class="callout-warning">
+            <div class="callout-title">O Gatilho Emocional: Sinal de Alerta</div>
+            <p>A desinformação contemporânea é arquitetada para ativar emoções instintivas imediatas: raiva, indignação cívica ou euforia partidária. Se você sentiu urgência visceral de compartilhar uma notícia no WhatsApp antes mesmo de ler o texto completo, pare e cheque imediatamente: você pode estar sendo manipulado.</p>
+          </div>
         `,
         questions: [
           {
@@ -927,8 +1415,32 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 4,
         content: `
           <h2>O Ponto Cego da Mente Humana</h2>
-          <p>Nosso cérebro evoluiu para economizar energia mental, utilizando atalhos mentais que frequentemente geram distorções sistemáticas chamadas de <strong>vieses cognitivos</strong>.</p>
-          <p>O mais perigoso no debate cívico é o <strong>Viés de Confirmação</strong>: a tendência natural de buscar, valorizar e compartilhar apenas informações que confirmem nossas crenças prévias, enquanto ignoramos, desqualificamos ou ridicularizamos dados sólidos que desafiem nosso ponto de vista.</p>
+          <div class="callout-box">
+            <div class="callout-title">A Mecânica dos Vieses Cognitivos</div>
+            <p>O cérebro humano foi moldado pela evolução para poupar energia metabólica e tomar decisões rápidas diante do perigo. Para isso, utiliza heurísticas e atalhos mentais que, no ambiente moderno de hiperinformação, geram distorções sistemáticas de interpretação denominadas <strong>vieses cognitivos</strong>.</p>
+          </div>
+
+          <h3>O Perigo Central: O Viés de Confirmação</h3>
+          <p>Dentre dezenas de armadilhas psicológicas mapeadas pela ciência comportamental, o <strong>Viés de Confirmação</strong> é o mais destrutivo para a lucidez política e financeira de um cidadão:</p>
+
+          <div class="tier-card">
+            <div class="tier-title">Como o Viés de Confirmação Opera no Subconsciente</div>
+            <ul>
+              <li><strong>Busca Seletiva:</strong> Procuramos ativamente apenas artigos, influenciadores e postagens que validem o que nós já acreditamos previamente.</li>
+              <li><strong>Assimilação Desigual:</strong> Aceitamos alegações frágeis sem qualquer exigência de provas se elas falarem mal de um adversário que detestamos.</li>
+              <li><strong>Blindagem Imune:</strong> Desqualificamos dados estatísticos sólidos, estudos de universidades conceituadas ou auditorias governamentais rotulando-os como 'conspiração' caso contrariem nossa visão de mundo.</li>
+            </ul>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">A Formação de Câmaras de Eco (Bolhas Digitais)</div>
+            <p>Os algoritmos de redes sociais amplificam esse viés entregando apenas conteúdos que reforçam crenças prévias para aumentar o tempo de tela do usuário, criando a falsa impressão de que "o mundo inteiro pensa exatamente como eu".</p>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">O Teste da Honestidade Intelectual</div>
+            <p>Faça a si mesmo esta pergunta socrática: <em>"Que tipo de evidência documental ou estatística seria suficiente para me convencer de que estou errado sobre esta convicção política ou financeira?"</em> Se a resposta for "nenhuma", você não possui uma posição racional — possui um dogma religioso.</p>
+          </div>
         `,
         questions: [
           {
@@ -954,14 +1466,33 @@ export const educationalModules: EducationalModule[] = [
         duration: '25 min',
         orderIndex: 5,
         content: `
-          <h2>Números não mentem, mas mentirosos usam números</h2>
-          <p>Gráficos em telejornais ou propagandas políticas podem induzir ao erro mesmo apresentando dados verdadeiros se forem apresentados com desonestidade visual:</p>
+          <h2>Números Não Mentem, Mas Mentirosos Usam Números</h2>
+          <div class="callout-box">
+            <div class="callout-title">Estatística Crítica</div>
+            <p>Um gráfico ou demonstrativo estatístico em telejornais, peças publicitárias ou propagandas eleitorais pode induzir o público ao erro mesmo utilizando dados matematicamente reais, caso sua apresentação visual seja deliberadamente manipulada para construir uma narrativa distorcida.</p>
+          </div>
 
-          <ul>
-            <li><strong>Eixo Y Truncado:</strong> Não começar o eixo vertical do gráfico no zero para fazer uma variação ínfima (ex: de 51% para 52%) parecer um crescimento astronômico visualmente desproporcional.</li>
-            <li><strong>Correlação NÃO é Causalidade:</strong> O fato de dois eventos acontecerem simultaneamente não significa que um causou o outro. Pode haver uma terceira variável oculta ou mera coincidência estatística.</li>
-            <li><strong>Amostragem Viciada (Cherry Picking):</strong> Selecionar a dedo apenas um ano específico atípico como termo de comparação para vender uma narrativa fictícia de sucesso ou fracasso.</li>
-          </ul>
+          <h3>As Três Grandes Armadilhas na Leitura de Dados</h3>
+
+          <div class="tier-card">
+            <div class="tier-title">1. Eixo Y Truncado (O Gráfico Sem o Zero)</div>
+            <p>Ao omitir a base zero no eixo vertical e iniciar a escala, por exemplo, em 50%, uma variação ínfima de 50,5% para 51,5% é apresentada com uma barra visual três vezes maior que a outra, simulando uma explosão de crescimento quando o movimento real foi irrelevante.</p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">2. Confundir Correlação Estatística com Causalidade Real</div>
+            <p>O fato de duas variáveis subirem simultaneamente no tempo não significa que uma é causa da outra. Podem decorrer de uma variável oculta comum ou de mera coincidência estatística (correlação espúria). <em>Exemplo clássico: O consumo de sorvetes e os afogamentos em praias aumentam juntos no verão, não porque o sorvete cause afogamento, mas porque o calor leva as pessoas ao mar.</em></p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-title">3. Amostragem Viciada e Recorte Temporal (Cherry Picking)</div>
+            <p>Consiste em escolher a dedo um ano ou mês atípico (como o pico da pandemia de 2020 ou uma estiagem extraordinária) como termo base de comparação para forjar uma ilusão de crescimento exuberante ou decadência catastrófica.</p>
+          </div>
+
+          <div class="callout-warning">
+            <div class="callout-title">Checklist ao Analisar Qualquer Gráfico</div>
+            <p>Sempre verifique: (1) O eixo vertical começa no zero? (2) Qual é a fonte oficial dos números? (3) A amostra abrange um período histórico amplo ou apenas recortes convenientes? (4) Os números estão corrigidos pela inflação do período?</p>
+          </div>
         `,
         questions: [
           {

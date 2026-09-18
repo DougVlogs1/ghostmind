@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase/client'
+import XPStatusBar from '@/components/XPStatusBar'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -98,6 +99,7 @@ export default function Navbar() {
             {!loadingUser && (
               user ? (
                 <div className="flex items-center space-x-3">
+                  <XPStatusBar userId={user.id} />
                   <Link
                     href="/dashboard"
                     className="px-4 py-2 rounded-xl bg-br-green hover:bg-br-green-dark text-white text-sm font-bold shadow-sm transition-colors"
@@ -178,6 +180,9 @@ export default function Navbar() {
           <div className="pt-3 border-t border-slate-200 space-y-2">
             {user ? (
               <>
+                <div className="pb-1">
+                  <XPStatusBar userId={user.id} isMobile />
+                </div>
                 <Link
                   href="/dashboard"
                   onClick={() => setIsOpen(false)}

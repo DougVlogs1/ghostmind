@@ -168,6 +168,9 @@ export default function QuizPage() {
           totalQuestions,
         })
         setXpEarned(result.xpEarned)
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('pense-brasil-xp-updated'))
+        }
       } catch (err) {
         console.warn('Erro ao registrar pontuação no Supabase:', err)
       } finally {
