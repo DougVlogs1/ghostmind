@@ -1,13 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { supabase } from '@/lib/supabase/client'
 import { BRAZILIAN_STATES, formatPhoneNumber, isValidPhone } from '@/lib/constants/brazil'
 
-export default function RegisterPage() {
+function RegisterForm() {
   const searchParams = useSearchParams()
   const redirectTo = searchParams.get('redirectTo') || '/dashboard'
 
@@ -387,5 +387,22 @@ export default function RegisterPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center py-12 px-4">
+          <div className="text-center">
+            <div className="w-10 h-10 border-4 border-br-green border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+            <p className="text-sm text-slate-500 font-medium">Carregando cadastro...</p>
+          </div>
+        </div>
+      }
+    >
+      <RegisterForm />
+    </Suspense>
   )
 }
