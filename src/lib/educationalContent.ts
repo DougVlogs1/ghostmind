@@ -59,42 +59,29 @@ export const educationalModules: EducationalModule[] = [
         orderIndex: 1,
         content: `
           <h2>Poderes e Limitações do Presidente da República</h2>
-          <div class="callout-box">
-            <div class="callout-title">Papel Constitucional na República</div>
-            <p>Na República Federativa do Brasil, o Presidente desempenha simultaneamente duas funções centrais de liderança: a de <strong>Chefe de Estado</strong> (representando a soberania do país perante as demais nações nas relações diplomáticas) e a de <strong>Chefe de Governo</strong> (liderando a administração pública federal e as políticas públicas no âmbito nacional).</p>
-          </div>
+          <p>Na República Federativa do Brasil, o Presidente desempenha duas funções centrais: a de <strong>Chefe de Estado</strong> (representando o país perante as demais nações) e a de <strong>Chefe de Governo</strong> (liderando a administração pública federal e as políticas de governo).</p>
 
-          <p>Para manter o equilíbrio e evitar excessos de poder, a Constituição de 1988 estabelece claramente as prerrogativas e os limites intransponíveis do cargo:</p>
+          <h3>O que o Presidente PODE fazer:</h3>
+          <ul>
+            <li><strong>Executar leis e políticas públicas:</strong> Administrar os recursos federais e colocar em prática as diretrizes aprovadas em lei.</li>
+            <li><strong>Sancionar ou Vetar projetos de lei:</strong> Após aprovação pelo Congresso Nacional, o Presidente pode aprovar (sancionar) ou rejeitar total ou parcialmente (vetar) uma proposta.</li>
+            <li><strong>Editar Medidas Provisórias (MPs):</strong> Em situações de urgência e relevância, com força de lei imediata, com validade máxima de até 120 dias, dependendo de posterior aprovação do Congresso.</li>
+            <li><strong>Nomear ministros de Estado e dirigentes:</strong> Escolher a equipe ministerial e indicar ministros do STF e dirigentes de agências reguladoras (sujeito à sabatina e aprovação do Senado Federal).</li>
+            <li><strong>Comando supremo das Forças Armadas:</strong> Exercer a autoridade máxima sobre Exército, Marinha e Aeronáutica dentro dos preceitos constitucionais.</li>
+          </ul>
 
-          <div class="compare-grid">
-            <div class="compare-can">
-              <div class="compare-header">Atribuições e Competências (Pode Fazer)</div>
-              <ul>
-                <li><strong>Executar leis e políticas públicas:</strong> Administrar os recursos federais e colocar em prática as diretrizes aprovadas em lei.</li>
-                <li><strong>Sancionar ou Vetar projetos de lei:</strong> Após aprovação pelo Congresso Nacional, o Presidente pode aprovar (sancionar) ou rejeitar total ou parcialmente (vetar) uma proposta.</li>
-                <li><strong>Editar Medidas Provisórias (MPs):</strong> Em situações de urgência e relevância, com força de lei imediata, com validade máxima de até 120 dias, dependendo de posterior aprovação do Congresso.</li>
-                <li><strong>Nomear ministros de Estado e dirigentes:</strong> Escolher a equipe ministerial e indicar ministros do STF e dirigentes de agências reguladoras (sujeito à sabatina e aprovação do Senado Federal).</li>
-                <li><strong>Comando supremo das Forças Armadas:</strong> Exercer a autoridade máxima sobre Exército, Marinha e Aeronáutica dentro dos preceitos constitucionais.</li>
-              </ul>
-            </div>
-            <div class="compare-cannot">
-              <div class="compare-header">Limites Constitucionais (Não Pode Fazer)</div>
-              <ul>
-                <li><strong>Criar leis sozinho:</strong> Não pode legislar arbitrariamente fora dos limites constitucionais. Leis ordinárias e complementares dependem exclusivamente do Congresso Nacional.</li>
-                <li><strong>Gastar sem previsão orçamentária:</strong> O Executivo só pode realizar despesas autorizadas pela Lei Orçamentária Anual (LOA) e leis de diretrizes aprovadas pelos parlamentares.</li>
-                <li><strong>Interferir em decisões judiciais:</strong> O Judiciário é independente. Decisões do STF e tribunais devem ser integralmente cumpridas pelo Poder Executivo.</li>
-                <li><strong>Fechar o Congresso ou dissolver tribunais:</strong> Atos contra o livre exercício dos poderes constituem crime de responsabilidade e grave atentado contra a ordem democrática.</li>
-              </ul>
-            </div>
-          </div>
+          <h3>O que o Presidente NÃO PODE fazer:</h3>
+          <ul>
+            <li><strong>Criar leis sozinho:</strong> Não pode legislar arbitrariamente fora dos limites constitucionais. Leis ordinárias e complementares dependem exclusivamente do Congresso Nacional.</li>
+            <li><strong>Gastar sem previsão orçamentária:</strong> O Executivo só pode realizar despesas autorizadas pela Lei Orçamentária Anual (LOA) e leis de diretrizes aprovadas pelos parlamentares.</li>
+            <li><strong>Interferir em decisões judiciais:</strong> O Judiciário é independente. Decisões do STF e tribunais devem ser integralmente cumpridas pelo Poder Executivo.</li>
+            <li><strong>Fechar o Congresso ou dissolver tribunais:</strong> Atos contra o livre exercício dos poderes constituem crime de responsabilidade e grave atentado contra a ordem democrática.</li>
+          </ul>
 
           <hr />
 
           <h3>O Sistema de Freios e Contrapesos (Checks and Balances)</h3>
-          <div class="callout-warning">
-            <div class="callout-title">Princípio da Harmonia e Limitação de Poder</div>
-            <p>Nenhum governante possui poder irrestrito. Se o Presidente vetar uma lei por discordância política, o Congresso Nacional pode derrubar esse veto por maioria absoluta. Se o Presidente editar um decreto ou ato incompatível com a Carta Magna, o Supremo Tribunal Federal tem a autoridade de declará-lo inconstitucional e nulo de pleno direito.</p>
-          </div>
+          <p>Nenhum governante possui poder irrestrito. Se o Presidente vetar uma lei por discordância política, o Congresso Nacional pode derrubar esse veto por maioria absoluta. Se o Presidente editar um decreto ou ato incompatível com a Carta Magna, o Supremo Tribunal Federal tem a autoridade de declará-lo inconstitucional e nulo de pleno direito.</p>
         `,
         questions: [
           {
@@ -260,33 +247,22 @@ export const educationalModules: EducationalModule[] = [
 
           <hr />
 
-          <h3>Despesas Obrigatórias vs. Despesas Discricionárias</h3>
-          <p>Compreender essa distinção é fundamental para qualquer análise honesta das contas públicas:</p>
+          <h3>1. Despesas Obrigatórias (>90% do Orçamento)</h3>
+          <ul>
+            <li><strong>Previdência e Benefícios Sociais:</strong> Pagamento de aposentadorias do INSS, pensões e BPC.</li>
+            <li><strong>Folha Salarial:</strong> Vencimentos de servidores públicos federais ativos e inativos.</li>
+            <li><strong>Pisos Constitucionais:</strong> Percentuais mínimos obrigatórios de repasse para Saúde e Educação.</li>
+            <li><strong>Obrigatoriedade legal:</strong> O governo é obrigado por lei a pagar pontualmente; não pode remanejar discricionariamente.</li>
+          </ul>
 
-          <div class="compare-grid">
-            <div class="compare-can">
-              <div class="compare-header">Despesas Obrigatórias (>90% do Orçamento)</div>
-              <ul>
-                <li><strong>Previdência e Benefícios Sociais:</strong> Pagamento de aposentadorias do INSS, pensões e BPC.</li>
-                <li><strong>Folha Salarial:</strong> Vencimentos de servidores públicos federais ativos e inativos.</li>
-                <li><strong>Pisos Constitucionais:</strong> Percentuais mínimos obrigatórios de repasse para Saúde e Educação.</li>
-                <li><strong>Obrigatoriedade legal:</strong> O governo é obrigado por lei a pagar pontualmente; não pode remanejar discricionariamente.</li>
-              </ul>
-            </div>
-            <div class="compare-cannot">
-              <div class="compare-header">Despesas Discricionárias (<10% do Orçamento)</div>
-              <ul>
-                <li><strong>Investimentos em Infraestrutura:</strong> Novas rodovias, ferrovias, portos e habitação popular.</li>
-                <li><strong>Custeio e Manutenção:</strong> Contas de energia de universidades, segurança e equipamentos de pesquisa.</li>
-                <li><strong>Margem de Ajuste:</strong> É a única fração que o governo consegue contingenciar ou cortar rapidamente quando as receitas caem.</li>
-              </ul>
-            </div>
-          </div>
+          <h3>2. Despesas Discricionárias (<10% do Orçamento)</h3>
+          <ul>
+            <li><strong>Investimentos em Infraestrutura:</strong> Novas rodovias, ferrovias, portos e habitação popular.</li>
+            <li><strong>Custeio e Manutenção:</strong> Contas de energia de universidades, segurança e equipamentos de pesquisa.</li>
+            <li><strong>Margem de Ajuste:</strong> É a única fração que o governo consegue contingenciar ou cortar rapidamente quando as receitas caem.</li>
+          </ul>
 
-          <div class="callout-warning">
-            <div class="callout-title">Rigidez Orçamentária e Reformas</div>
-            <p>Como mais de 90% dos recursos arrecadados já se encontram comprometidos com despesas obrigatórias fixadas por lei ou pela Constituição, governantes têm margem de manobra orçamentária muito reduzida, motivo pelo qual o debate econômico exige reformas estruturais profundas no Congresso.</p>
-          </div>
+          <p><strong>Atenção à Rigidez Orçamentária:</strong> Como mais de 90% dos recursos arrecadados já se encontram comprometidos com despesas obrigatórias fixadas por lei ou pela Constituição, governantes têm margem de manobra orçamentária muito reduzida, motivo pelo qual o debate econômico exige reformas estruturais profundas no Congresso.</p>
         `,
         questions: [
           {
@@ -725,27 +701,19 @@ export const educationalModules: EducationalModule[] = [
             <p>Quando você contrata um empréstimo ou financiamento, paga juros pela antecipação de consumo com o capital alheio. Quando você investe, é remunerado com juros pela disciplina de adiar o consumo imediato e disponibilizar seu capital na economia.</p>
           </div>
 
-          <h3>A Diferença Entre Juros Simples e Juros Compostos</h3>
-          <p>O mecanismo matemático adotado define se o crescimento da dívida ou da aplicação será modesto ou avassalador:</p>
+          <h3>1. Juros Simples (Crescimento Linear)</h3>
+          <ul>
+            <li><strong>Base de Cálculo:</strong> A taxa percentual incide unicamente sobre o capital inicial emprestado ao longo de todo o prazo.</li>
+            <li><strong>Fórmula Matemática:</strong> <em>J = C × i × t</em></li>
+            <li><strong>Comportamento:</strong> A quantia de juros acrescentada a cada mês permanece sempre fixa e previsível.</li>
+          </ul>
 
-          <div class="compare-grid">
-            <div class="compare-can">
-              <div class="compare-header">Juros Simples (Crescimento Linear)</div>
-              <ul>
-                <li><strong>Base de Cálculo:</strong> A taxa percentual incide unicamente sobre o capital inicial emprestado ao longo de todo o prazo.</li>
-                <li><strong>Fórmula Matemática:</strong> <em>J = C × i × t</em></li>
-                <li><strong>Comportamento:</strong> A quantia de juros acrescentada a cada mês permanece sempre fixa e previsível.</li>
-              </ul>
-            </div>
-            <div class="compare-cannot">
-              <div class="compare-header">Juros Compostos (Crescimento Exponencial)</div>
-              <ul>
-                <li><strong>Base de Cálculo:</strong> A taxa incide sobre o capital inicial somado aos juros acumulados nos meses anteriores ("juros sobre juros").</li>
-                <li><strong>Fórmula Matemática:</strong> <em>M = C × (1 + i)ᵗ</em></li>
-                <li><strong>Comportamento:</strong> No longo prazo, a curva de crescimento decola em ritmo geométrico.</li>
-              </ul>
-            </div>
-          </div>
+          <h3>2. Juros Compostos (Crescimento Exponencial)</h3>
+          <ul>
+            <li><strong>Base de Cálculo:</strong> A taxa incide sobre o capital inicial somado aos juros acumulados nos meses anteriores ("juros sobre juros").</li>
+            <li><strong>Fórmula Matemática:</strong> <em>M = C × (1 + i)ᵗ</em></li>
+            <li><strong>Comportamento:</strong> No longo prazo, a curva de crescimento decola em ritmo geométrico.</li>
+          </ul>
 
           <div class="formula-box">
             <span class="formula-label">Equação Fundamental dos Juros Compostos</span>
@@ -1034,26 +1002,21 @@ export const educationalModules: EducationalModule[] = [
           <h3>O Ciclo da Política Monetária na Prática</h3>
           <p>O Banco Central ajusta a Selic para calibrar o ritmo de aquecimento da economia e manter a inflação na meta definida pelo Conselho Monetário Nacional:</p>
 
-          <div class="compare-grid">
-            <div class="compare-can">
-              <div class="compare-header">Quando a Inflação Sobe (Elevação da Selic)</div>
-              <ul>
-                <li><strong>Encarecimento do Crédito:</strong> Juros de empréstimos e cartões sobem em toda a rede bancária.</li>
-                <li><strong>Desaceleração do Consumo:</strong> Famílias compram menos a prazo e adiam trocas de carro ou imóvel.</li>
-                <li><strong>Incentivo à Poupança:</strong> Investimentos em renda fixa tornam-se mais atraentes que consumir hoje.</li>
-                <li><strong>Queda da Inflação:</strong> Com menor demanda na ponta final, lojistas e fabricantes são forçados a frear reajustes de preços.</li>
-              </ul>
-            </div>
-            <div class="compare-cannot">
-              <div class="compare-header">Quando a Economia Esfria (Corte da Selic)</div>
-              <ul>
-                <li><strong>Barateamento do Crédito:</strong> Financiamentos e empréstimos tornam-se mais acessíveis.</li>
-                <li><strong>Aceleração dos Negócios:</strong> Empresas tomam crédito para expandir frotas, abrir lojas e contratar operários.</li>
-                <li><strong>Aquecimento do Consumo:</strong> As famílias voltam a financiar bens e serviços essenciais e duráveis.</li>
-                <li><strong>Crescimento do PIB:</strong> A economia ganha tração e gera postos de trabalho formais.</li>
-              </ul>
-            </div>
-          </div>
+          <h3>1. Quando a Inflação Sobe (Elevação da Selic)</h3>
+          <ul>
+            <li><strong>Encarecimento do Crédito:</strong> Juros de empréstimos e cartões sobem em toda a rede bancária.</li>
+            <li><strong>Desaceleração do Consumo:</strong> Famílias compram menos a prazo e adiam trocas de carro ou imóvel.</li>
+            <li><strong>Incentivo à Poupança:</strong> Investimentos em renda fixa tornam-se mais atraentes que consumir hoje.</li>
+            <li><strong>Queda da Inflação:</strong> Com menor demanda na ponta final, lojistas e fabricantes são forçados a frear reajustes de preços.</li>
+          </ul>
+
+          <h3>2. Quando a Economia Esfria (Corte da Selic)</h3>
+          <ul>
+            <li><strong>Barateamento do Crédito:</strong> Financiamentos e empréstimos tornam-se mais acessíveis.</li>
+            <li><strong>Aceleração dos Negócios:</strong> Empresas tomam crédito para expandir frotas, abrir lojas e contratar operários.</li>
+            <li><strong>Aquecimento do Consumo:</strong> As famílias voltam a financiar bens e serviços essenciais e duráveis.</li>
+            <li><strong>Crescimento do PIB:</strong> A economia ganha tração e gera postos de trabalho formais.</li>
+          </ul>
 
           <div class="callout-warning">
             <div class="callout-title">O Efeito Defasado da Selic</div>
@@ -1196,27 +1159,19 @@ export const educationalModules: EducationalModule[] = [
             <p>Em qualquer sociedade moderna e civilizada, o Estado arrecada tributos compulsórios dos cidadãos e das empresas para custear a oferta de bens públicos universais: soberania e segurança pública, ordenamento judiciário, malha de transportes, diplomacia, fiscalização e a rede de proteção social aos indivíduos em situação de vulnerabilidade.</p>
           </div>
 
-          <h3>Tributação Direta vs. Tributação Indireta</h3>
-          <p>A arquitetura tributária divide-se em duas modalidades fundamentais com impactos distributivos inteiramente distintos:</p>
+          <h3>1. Tributação Direta (Sobre Renda e Patrimônio)</h3>
+          <ul>
+            <li><strong>Identificação Clara:</strong> Incide nominalmente sobre quem gera riqueza ou é proprietário de bens (ex: IRPF, IPTU, IPVA).</li>
+            <li><strong>Capacidade Contributiva:</strong> Permite adotar alíquotas progressivas (quem ganha mais recolhe uma alíquota percentual superior).</li>
+            <li><strong>Transparência:</strong> O contribuinte sabe com precisão cirúrgica o volume recolhido para o erário público.</li>
+          </ul>
 
-          <div class="compare-grid">
-            <div class="compare-can">
-              <div class="compare-header">Tributação Direta (Sobre Renda e Patrimônio)</div>
-              <ul>
-                <li><strong>Identificação Clara:</strong> Incide nominalmente sobre quem gera riqueza ou é proprietário de bens (ex: IRPF, IPTU, IPVA).</li>
-                <li><strong>Capacidade Contributiva:</strong> Permite adotar alíquotas progressivas (quem ganha mais recolhe uma alíquota percentual superior).</li>
-                <li><strong>Transparência:</strong> O contribuinte sabe com precisão cirúrgica o volume recolhido para o erário público.</li>
-              </ul>
-            </div>
-            <div class="compare-cannot">
-              <div class="compare-header">Tributação Indireta (Sobre Consumo de Bens e Serviços)</div>
-              <ul>
-                <li><strong>Embutida nos Preços:</strong> Vem ocultada na nota fiscal do supermercado, energia e remédios (ex: ICMS, PIS/Cofins, IPI, ISS).</li>
-                <li><strong>Alíquota Uniforme:</strong> Um milionário e um trabalhador desempregado pagam exatamente o mesmo imposto em reais sobre um quilo de alimento.</li>
-                <li><strong>Efeito Regressivo:</strong> Penaliza desproporcionalmente as classes de menor poder aquisitivo.</li>
-              </ul>
-            </div>
-          </div>
+          <h3>2. Tributação Indireta (Sobre Consumo de Bens e Serviços)</h3>
+          <ul>
+            <li><strong>Embutida nos Preços:</strong> Vem ocultada na nota fiscal do supermercado, energia e remédios (ex: ICMS, PIS/Cofins, IPI, ISS).</li>
+            <li><strong>Alíquota Uniforme:</strong> Um milionário e um trabalhador desempregado pagam exatamente o mesmo imposto em reais sobre um quilo de alimento.</li>
+            <li><strong>Efeito Regressivo:</strong> Penaliza desproporcionalmente as classes de menor poder aquisitivo.</li>
+          </ul>
 
           <div class="callout-warning">
             <div class="callout-title">A Regressividade Tributária no Brasil</div>
@@ -1265,24 +1220,19 @@ export const educationalModules: EducationalModule[] = [
             <p>Na era das redes sociais e da polarização algorítmica, a confusão deliberada ou involuntária entre <strong>fatos verificáveis</strong> e <strong>opiniões subjetivas</strong> tornou-se a raiz primordial da disseminação de desinformação no debate cívico.</p>
           </div>
 
-          <div class="compare-grid">
-            <div class="compare-can">
-              <div class="compare-header">O Que É um Fato? (Objetivo)</div>
-              <ul>
-                <li><strong>Comprovação Empírica:</strong> Uma afirmação descritiva sobre a realidade material que pode ser rigorosamente confirmada ou refutada com dados, medições ou documentos.</li>
-                <li><strong>Independência:</strong> O fato independe da vontade, credo ou preferência de quem o declara.</li>
-                <li><strong>Exemplo Concreto:</strong> <em>"O PIB brasileiro expandiu 2,9% em 2023 de acordo com o relatório oficial do IBGE."</em></li>
-              </ul>
-            </div>
-            <div class="compare-cannot">
-              <div class="compare-header">O Que É uma Opinião? (Subjetiva)</div>
-              <ul>
-                <li><strong>Juízo de Valor:</strong> Uma interpretação individual, avaliação moral, crença ideológica ou preferência pessoal sobre determinado acontecimento.</li>
-                <li><strong>Pluralidade:</strong> Pessoas bem intencionadas podem sustentar opiniões antagônicas diante de um mesmo conjunto de fatos.</li>
-                <li><strong>Exemplo Concreto:</strong> <em>"Essa taxa de crescimento é pífia e prova a incompetência das políticas econômicas vigentes."</em></li>
-              </ul>
-            </div>
-          </div>
+          <h3>1. O Que É um Fato? (Objetivo)</h3>
+          <ul>
+            <li><strong>Comprovação Empírica:</strong> Uma afirmação descritiva sobre a realidade material que pode ser rigorosamente confirmada ou refutada com dados, medições ou documentos.</li>
+            <li><strong>Independência:</strong> O fato independe da vontade, credo ou preferência de quem o declara.</li>
+            <li><strong>Exemplo Concreto:</strong> <em>"O PIB brasileiro expandiu 2,9% em 2023 de acordo com o relatório oficial do IBGE."</em></li>
+          </ul>
+
+          <h3>2. O Que É uma Opinião? (Subjetiva)</h3>
+          <ul>
+            <li><strong>Juízo de Valor:</strong> Uma interpretação individual, avaliação moral, crença ideológica ou preferência pessoal sobre determinado acontecimento.</li>
+            <li><strong>Pluralidade:</strong> Pessoas bem intencionadas podem sustentar opiniões antagônicas diante de um mesmo conjunto de fatos.</li>
+            <li><strong>Exemplo Concreto:</strong> <em>"Essa taxa de crescimento é pífia e prova a incompetência das políticas econômicas vigentes."</em></li>
+          </ul>
 
           <div class="callout-warning">
             <div class="callout-title">A Falsa Equivalência no Debate</div>
