@@ -73,10 +73,16 @@ export default function LessonPage() {
         setShowAuthModal(true)
       } else if (result.success) {
         setIsCompleted(true)
-        setXpEarnedNotice(result.xpEarned)
-        setTimeout(() => setXpEarnedNotice(null), 4500)
+        if (result.xpEarned > 0) {
+          setXpEarnedNotice(result.xpEarned)
+          setTimeout(() => setXpEarnedNotice(null), 4500)
+        }
         if (typeof window !== 'undefined') {
-          window.dispatchEvent(new CustomEvent('pense-brasil-xp-updated'))
+          window.dispatchEvent(
+            new CustomEvent('pense-brasil-xp-updated', {
+              detail: { xpEarned: result.xpEarned, lessonId: lesson.id }
+            })
+          )
         }
       }
     } catch (err) {

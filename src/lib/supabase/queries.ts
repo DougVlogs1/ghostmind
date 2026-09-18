@@ -233,15 +233,102 @@ export async function getLessonById(idOrSlug: number | string): Promise<{
 }
 export const getLessonByIdOrSlug = getLessonById
 
+// ─────────────────────────────────────────────────────────────────────────────
+// LÓGICA DE NÍVEIS E XP
+//
+// O XP é sempre acumulado absolutamente em `total_xp`.
+// O threshold para cada nível segue a progressão:
+//   Nível 1 → 100 XP para subir
+//   Nível 2 → +150 XP (total: 250 XP)
+//   Nível 3 → +200 XP (total: 450 XP)
+//   Nível N → threshold(N) = N * (100 + 25*(N-1))
+//
+// `level_progress` é calculado dentro da faixa do nível atual (não sobre total).
+// ─────────────────────────────────────────────────────────────────────────────
+export function xpThresholdForLevel(level: number): number {
+  // Threshold ABSOLUTO (acumulado) para COMPLETAR o nível `level`
+  // threshold(1)=100, threshold(2)=250, threshold(3)=450, threshold(4)=700...
+  return level * (100 + 25 * (level - 1))
+}
+
+export function computeLevelFromXp(totalXp: number): {
+  level: number
+  levelProgress: number
+  xpToNextLevel: number
+  prevThreshold: number
+} {
+  let level = 1
+  while (xpThresholdForLevel(level) <= totalXp) {
+    level++
+  }
+  // `level` é o nível atual (ainda não completado)
+  const prevThreshold = level > 1 ? xpThresholdForLevel(level - 1) : 0
+  const nextThreshold = xpThresholdForLevel(level)
+  const xpInLevel = totalXp - prevThreshold
+  const xpNeeded = nextThreshold - prevThreshold
+  const levelProgress = Math.min(100, Math.round((xpInLevel / xpNeeded) * 100))
+  return { level, levelProgress, xpToNextLevel: nextThreshold, prevThreshold }
+}
+
+// Função auxiliar para atualizar XP e Nível do usuário
+async function addXpToUser(userId: string, xpDelta: number) {
+  if (xpDelta <= 0) return
+  try {
+    const { data: levelData } = await supabase
+      .from('user_levels')
+      .select('total_xp')
+      .eq('user_id', userId)
+      .maybeSingle()
+
+    const prevTotalXp = levelData?.total_xp ?? 0
+    const newTotalXp = prevTotalXp + xpDelta
+    const { level, levelProgress, xpToNextLevel } = computeLevelFromXp(newTotalXp)
+
+    const { error: upsertErr } = await supabase.from('user_levels').upsert(
+      {
+        user_id: userId,
+        total_xp: newTotalXp,
+        current_level: level,
+        xp_to_next_level: xpToNextLevel,
+        level_progress: levelProgress,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: 'user_id' }
+    )
+
+    if (upsertErr) {
+      console.warn('Erro ao atualizar user_levels no Supabase:', upsertErr.message)
+    }
+  } catch (err) {
+    console.warn('Não foi possível sincronizar XP no banco remoto:', err)
+  }
+}
+
 // 4. Marca uma lição como concluída e concede XP
-export async function markLessonCompleted(lessonId: number): Promise<{ success: boolean; xpEarned: number; requiresAuth?: boolean }> {
+export async function markLessonCompleted(lessonId: number): Promise<{
+  success: boolean
+  xpEarned: number
+  alreadyCompleted?: boolean
+  requiresAuth?: boolean
+}> {
+  const XP_REWARD = 20
   try {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) {
       return { success: false, xpEarned: 0, requiresAuth: true }
     }
 
-    // Registra progresso no banco Supabase
+    // Verifica se já foi concluída para não duplicar XP
+    const { data: existing } = await supabase
+      .from('user_progress')
+      .select('completed')
+      .eq('user_id', user.id)
+      .eq('lesson_id', lessonId)
+      .maybeSingle()
+
+    const alreadyCompleted = existing?.completed === true
+
+    // Salva progresso no Supabase
     const { error: progError } = await supabase
       .from('user_progress')
       .upsert(
@@ -256,17 +343,19 @@ export async function markLessonCompleted(lessonId: number): Promise<{ success: 
       )
 
     if (progError) {
-      console.warn('Não foi possível salvar o progresso no Supabase remoto:', progError.message)
-      return { success: true, xpEarned: 20 }
+      console.warn('user_progress upsert:', progError.message)
     }
 
-    // Atualiza ou insere XP em user_levels
-    await addXpToUser(user.id, 20)
+    // Só concede XP na primeira conclusão
+    if (!alreadyCompleted) {
+      await addXpToUser(user.id, XP_REWARD)
+      return { success: true, xpEarned: XP_REWARD }
+    }
 
-    return { success: true, xpEarned: 20 }
+    return { success: true, xpEarned: 0, alreadyCompleted: true }
   } catch (err) {
     console.warn('Erro ao marcar lição como concluída:', err)
-    return { success: true, xpEarned: 20 }
+    return { success: true, xpEarned: XP_REWARD }
   }
 }
 
@@ -282,12 +371,22 @@ export async function saveQuizScore(
       return { success: false, xpEarned: 0, requiresAuth: true }
     }
 
-    // Salva pontuação
+    // Verifica melhor nota anterior
+    const { data: existingScore } = await supabase
+      .from('user_scores')
+      .select('score')
+      .eq('user_id', user.id)
+      .eq('lesson_id', lessonId)
+      .maybeSingle()
+
+    const previousBest = Number(existingScore?.score ?? 0)
+
+    // Salva pontuação (mantém a melhor nota)
     await supabase.from('user_scores').upsert(
       {
         user_id: user.id,
         lesson_id: lessonId,
-        score,
+        score: Math.max(score, previousBest),
         max_score: 100,
         quiz_data: quizData,
         updated_at: new Date().toISOString(),
@@ -295,7 +394,7 @@ export async function saveQuizScore(
       { onConflict: 'user_id,lesson_id' }
     )
 
-    // Se a nota for de aprovação (>= 70%), marca a lição como completa
+    // Se aprovado (>= 70%), marca a lição como concluída
     if (score >= 70) {
       await supabase.from('user_progress').upsert(
         {
@@ -309,51 +408,14 @@ export async function saveQuizScore(
       )
     }
 
-    // Calcula XP com base na nota: 30 base + pontuação
-    const xpEarned = Math.round(30 + (score * 0.5))
+    // XP: 30 base + metade da nota (máx ~80 XP com 100%)
+    const xpEarned = Math.round(30 + score * 0.5)
     await addXpToUser(user.id, xpEarned)
 
     return { success: true, xpEarned }
   } catch (err) {
     console.warn('Erro ao salvar score do quiz:', err)
     return { success: true, xpEarned: 50 }
-  }
-}
-
-// Função auxiliar para atualizar XP e Nível do usuário
-async function addXpToUser(userId: string, xpDelta: number) {
-  try {
-    const { data: levelData } = await supabase
-      .from('user_levels')
-      .select('*')
-      .eq('user_id', userId)
-      .maybeSingle()
-
-    let currentXp = (levelData?.total_xp || 0) + xpDelta
-    let currentLevel = levelData?.current_level || 1
-    let xpToNext = levelData?.xp_to_next_level || 100
-
-    // Cálculo progressivo de nível (ex: 100 XP para nível 2, 250 XP para nível 3, etc.)
-    while (currentXp >= xpToNext) {
-      currentLevel += 1
-      xpToNext += 100 * currentLevel
-    }
-
-    const levelProgress = Math.min(100, Math.round((currentXp / xpToNext) * 100))
-
-    await supabase.from('user_levels').upsert(
-      {
-        user_id: userId,
-        total_xp: currentXp,
-        current_level: currentLevel,
-        xp_to_next_level: xpToNext,
-        level_progress: levelProgress,
-        updated_at: new Date().toISOString(),
-      },
-      { onConflict: 'user_id' }
-    )
-  } catch (err) {
-    console.warn('Não foi possível sincronizar XP no banco remoto:', err)
   }
 }
 
@@ -395,16 +457,20 @@ export async function getUserDashboardStats(userId: string): Promise<UserStats> 
       .eq('user_id', userId)
       .maybeSingle()
 
-    if (level) {
-      totalXp = level.total_xp || 0
-      currentLevel = level.current_level || 1
-      levelProgress = level.level_progress || 0
-      xpToNextLevel = level.xp_to_next_level || 100
+    if (level && level.total_xp !== undefined && level.total_xp !== null) {
+      const raw = Number(level.total_xp) || 0
+      const computed = computeLevelFromXp(raw)
+      totalXp = raw
+      currentLevel = computed.level
+      levelProgress = computed.levelProgress
+      xpToNextLevel = computed.xpToNextLevel
     } else {
       // Se não existir registro de nível, estima com base nas lições completadas
       totalXp = completedLessonIds.length * 20
-      currentLevel = Math.max(1, Math.floor(totalXp / 100) + 1)
-      levelProgress = (totalXp % 100)
+      const computed = computeLevelFromXp(totalXp)
+      currentLevel = computed.level
+      levelProgress = computed.levelProgress
+      xpToNextLevel = computed.xpToNextLevel
     }
   } catch (err) {
     console.warn('Erro ao carregar estatísticas do usuário no banco remoto:', err)
