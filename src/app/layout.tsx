@@ -23,6 +23,10 @@ export const metadata: Metadata = {
     'pensamento crítico'
   ],
   authors: [{ name: 'Pense Brasil' }],
+  icons: {
+    icon: '/images/favicon.ico',
+    shortcut: '/images/favicon.ico',
+  },
   openGraph: {
     title: 'Pense Brasil | Educação Política e Financeira',
     description: 'Plataforma educacional gratuita para uma cidadania consciente, inteligente e autônoma.',
@@ -51,8 +55,8 @@ export default function RootLayout({
               <div className="md:col-span-2 space-y-3">
                 <Link href="/" className="inline-flex items-center gap-3 group">
                   <Image
-                    src="/images/logo.png"
-                    alt="Pense Brasil Logo"
+                    src="/images/pense-brasil-logo-educacao-politica-financeira.webp"
+                    alt="Pense Brasil - Logo Educação Política e Financeira"
                     width={36}
                     height={36}
                     className="h-9 w-9 object-contain opacity-90 group-hover:opacity-100 transition-opacity flex-shrink-0"

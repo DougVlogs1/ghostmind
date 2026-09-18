@@ -155,8 +155,14 @@ export default function QuizPage() {
     })
 
     const finalScore = Math.round((correctCount / totalQuestions) * 100)
+    const passed = finalScore >= 70
     setScore(finalScore)
     setIsSubmitted(true)
+
+    // Persiste o resultado no localStorage para desbloquear a próxima lição
+    if (passed && lesson) {
+      localStorage.setItem(`quiz_passed_${lesson.id}`, 'true')
+    }
 
     // Se estiver logado, persiste pontuação e concede XP no Supabase
     if (isAuthenticated) {
@@ -370,31 +376,66 @@ export default function QuizPage() {
               </div>
 
               {/* Botões de Ação Pós-Resultado */}
-              <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <button
-                  onClick={handleRetry}
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-semibold text-sm transition-colors"
-                >
-                  🔄 Refazer Simulado
-                </button>
-
-                <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-                  <Link
-                    href={`/modules/${module.id}`}
-                    className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 rounded-xl border border-br-blue text-br-blue hover:bg-blue-50 font-bold text-sm transition-colors"
-                  >
-                    Ver Ementa do Módulo
-                  </Link>
-
-                  {nextLesson && (
-                    <Link
-                      href={`/lesson/${nextLesson.id}`}
-                      className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-br-green hover:bg-br-green-dark text-white font-bold text-sm shadow-sm transition-colors"
+              <div className="mt-8 pt-6 border-t border-slate-200">
+                {isPassed ? (
+                  /* ── APROVADO: Avançar ou revisar ── */
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <button
+                      onClick={handleRetry}
+                      className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 font-semibold text-sm transition-colors"
                     >
-                      Avançar para Próxima Lição →
-                    </Link>
-                  )}
-                </div>
+                      🔄 Refazer Quiz
+                    </button>
+
+                    <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                      <Link
+                        href={`/modules/${module.id}`}
+                        className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 rounded-xl border border-br-blue text-br-blue hover:bg-blue-50 font-bold text-sm transition-colors"
+                      >
+                        Ver Ementa do Módulo
+                      </Link>
+
+                      {nextLesson && (
+                        <Link
+                          href={`/lesson/${nextLesson.id}`}
+                          className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded-xl bg-br-green hover:bg-br-green-dark text-white font-extrabold text-sm shadow-md transition-all hover:scale-105"
+                        >
+                          🏆 Avançar para Próxima Lição →
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  /* ── REPROVADO: Incentivar revisão ── */
+                  <div className="rounded-2xl border-2 border-rose-200 bg-rose-50/50 p-5 mb-5">
+                    <div className="flex items-start gap-3 mb-4">
+                      <span className="text-2xl">📚</span>
+                      <div>
+                        <h3 className="font-extrabold text-rose-900 text-base mb-1">
+                          Você ainda não atingiu a pontuação mínima
+                        </h3>
+                        <p className="text-sm text-rose-800 leading-relaxed">
+                          Para desbloquear a próxima lição, você precisa acertar pelo menos <strong>70%</strong> das questões.
+                          Sua nota foi de <strong>{score}%</strong>. Revise a aula e tente novamente!
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col sm:flex-row items-center gap-3">
+                      <Link
+                        href={`/lesson/${lesson.id}`}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-br-blue hover:bg-br-blue-dark text-white font-bold text-sm shadow-sm transition-colors"
+                      >
+                        📖 Estudar Novamente
+                      </Link>
+                      <button
+                        onClick={handleRetry}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border-2 border-rose-400 text-rose-700 hover:bg-rose-100 font-bold text-sm transition-colors"
+                      >
+                        🔄 Refazer Quiz
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

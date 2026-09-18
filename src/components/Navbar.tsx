@@ -11,15 +11,40 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [user, setUser] = useState<any>(null)
   const [loadingUser, setLoadingUser] = useState(true)
+  const [realtimeAvatarUrl, setRealtimeAvatarUrl] = useState<string | null>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('pb_avatar_url') || null
+    }
+    return null
+  })
   const pathname = usePathname()
   const router = useRouter()
 
   useEffect(() => {
-    // 1. Obtém a sessão inicial
+    // 1. Obtém o usuário e foto com consistência da tabela profiles e auth metadata
     const checkUser = async () => {
       try {
-        const { data: { session } } = await supabase.auth.getSession()
-        setUser(session?.user || null)
+        const { data: { user: freshUser } } = await supabase.auth.getUser()
+        setUser(freshUser || null)
+        if (freshUser) {
+          // Busca foto atualizada da tabela profiles (fonte da verdade)
+          const { data: prof } = await supabase
+            .from('profiles')
+            .select('avatar_url')
+            .eq('id', freshUser.id)
+            .maybeSingle()
+
+          const finalAvatar = prof?.avatar_url || freshUser.user_metadata?.avatar_url || null
+          setRealtimeAvatarUrl(finalAvatar)
+          if (finalAvatar) {
+            localStorage.setItem('pb_avatar_url', finalAvatar)
+          } else {
+            localStorage.removeItem('pb_avatar_url')
+          }
+        } else {
+          localStorage.removeItem('pb_avatar_url')
+          setRealtimeAvatarUrl(null)
+        }
       } catch (err) {
         setUser(null)
       } finally {
@@ -30,18 +55,46 @@ export default function Navbar() {
     checkUser()
 
     // 2. Escuta mudanças na autenticação
-    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
       setUser(session?.user || null)
       setLoadingUser(false)
+      if (session?.user) {
+        const avatar = session.user.user_metadata?.avatar_url
+        if (avatar) {
+          setRealtimeAvatarUrl(avatar)
+          localStorage.setItem('pb_avatar_url', avatar)
+        }
+      } else if (event === 'SIGNED_OUT') {
+        setRealtimeAvatarUrl(null)
+        localStorage.removeItem('pb_avatar_url')
+      }
     })
+
+    // 3. Escuta evento de avatar atualizado em tempo real (disparado pela página de perfil)
+    const handleAvatarUpdate = (e: Event) => {
+      const detail = (e as CustomEvent).detail
+      if (detail !== undefined && 'avatarUrl' in detail) {
+        const newUrl = detail.avatarUrl || null
+        setRealtimeAvatarUrl(newUrl)
+        if (newUrl) {
+          localStorage.setItem('pb_avatar_url', newUrl)
+        } else {
+          localStorage.removeItem('pb_avatar_url')
+        }
+      }
+    }
+    window.addEventListener('pense-brasil-avatar-updated', handleAvatarUpdate)
 
     return () => {
       authListener?.subscription?.unsubscribe()
+      window.removeEventListener('pense-brasil-avatar-updated', handleAvatarUpdate)
     }
   }, [])
 
   const handleLogout = async () => {
     try {
+      localStorage.removeItem('pb_avatar_url')
+      setRealtimeAvatarUrl(null)
       await supabase.auth.signOut()
       setUser(null)
       router.push('/')
@@ -65,8 +118,8 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-3 group">
               <Image
-                src="/images/logo.png"
-                alt="Pense Brasil Logo"
+                src="/images/pense-brasil-logo-educacao-politica-financeira.webp"
+                alt="Pense Brasil - Logo Educação Política e Financeira"
                 width={36}
                 height={36}
                 className="h-9 w-9 object-contain group-hover:scale-105 transition-transform flex-shrink-0"
@@ -108,9 +161,28 @@ export default function Navbar() {
                   </Link>
                   <Link
                     href="/profile"
-                    className="px-3 py-2 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-50 text-sm font-semibold transition-colors"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-50 text-sm font-semibold transition-colors"
                   >
-                    Perfil
+                    {(() => {
+                      const avatarSrc = realtimeAvatarUrl || user.user_metadata?.avatar_url
+                      const gender = user.user_metadata?.gender
+                      if (avatarSrc) return (
+                        <img
+                          src={avatarSrc}
+                          alt="Perfil"
+                          className="w-5 h-5 rounded-full object-cover border border-emerald-500"
+                        />
+                      )
+                      if (gender === 'MASCULINO') return <span className="text-base leading-none">👨</span>
+                      if (gender === 'FEMININO') return <span className="text-base leading-none">👩</span>
+                      return (
+                        <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center text-[10px] font-black">
+                          {(user.user_metadata?.full_name || user.email || 'C').charAt(0).toUpperCase()}
+                        </span>
+                      )
+                    })()
+                    }
+                    <span>Perfil</span>
                   </Link>
                   <button
                     onClick={handleLogout}
@@ -193,9 +265,24 @@ export default function Navbar() {
                 <Link
                   href="/profile"
                   onClick={() => setIsOpen(false)}
-                  className="block w-full text-center px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm"
+                  className="flex items-center justify-center gap-2 w-full text-center px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm hover:bg-slate-50"
                 >
-                  Meu Perfil
+                  {(() => {
+                    const avatarSrc = realtimeAvatarUrl || user.user_metadata?.avatar_url
+                    const gender = user.user_metadata?.gender
+                    if (avatarSrc) return (
+                      <img
+                        src={avatarSrc}
+                        alt="Perfil"
+                        className="w-5 h-5 rounded-full object-cover border border-emerald-500"
+                      />
+                    )
+                    if (gender === 'MASCULINO') return <span className="text-base leading-none">👨</span>
+                    if (gender === 'FEMININO') return <span className="text-base leading-none">👩</span>
+                    return null
+                  })()
+                  }
+                  <span>Meu Perfil</span>
                 </Link>
                 <button
                   onClick={() => {

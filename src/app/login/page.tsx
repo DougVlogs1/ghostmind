@@ -3,6 +3,7 @@
 import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { supabase } from '@/lib/supabase/client'
 
 function LoginForm() {
@@ -49,8 +50,15 @@ function LoginForm() {
   return (
     <div className="max-w-md w-full bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
       <div className="text-center mb-8">
-        <div className="w-12 h-12 rounded-full bg-emerald-50 text-br-green flex items-center justify-center mx-auto mb-3 font-bold text-xl">
-          🇧🇷
+        <div className="flex justify-center mb-3">
+          <Image
+            src="/images/pense-brasil-logo-educacao-politica-financeira.webp"
+            alt="Pense Brasil - Logo Educação Política e Financeira"
+            width={56}
+            height={56}
+            className="h-14 w-14 object-contain"
+            priority
+          />
         </div>
         <h1 className="text-2xl font-extrabold text-slate-900">
           Acesse sua Conta

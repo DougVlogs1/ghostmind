@@ -2,6 +2,17 @@
 import { educationalModules, Lesson, EducationalModule, Question } from '@/lib/educationalContent'
 import { supabase } from '@/lib/supabase/client'
 
+export interface UserAchievement {
+  id: number
+  name: string
+  slug: string
+  description: string
+  icon_emoji: string
+  points: number
+  category: string
+  earned_date: string
+}
+
 export interface UserStats {
   completedLessonsCount: number
   totalLessonsCount: number
@@ -13,6 +24,8 @@ export interface UserStats {
   averageScore: number
   quizzesTaken: number
   achievementsCount: number
+  completedLessonIds: number[]
+  achievementsList: UserAchievement[]
   modulesProgress: {
     moduleId: number
     title: string
@@ -304,7 +317,123 @@ async function addXpToUser(userId: string, xpDelta: number) {
   }
 }
 
-// 4. Marca uma lição como concluída e concede XP
+// 4. Sincroniza e concede conquistas cívicas ao usuário
+export async function syncUserAchievements(
+  userId: string,
+  client?: any
+): Promise<{ count: number; list: UserAchievement[] }> {
+  const sb = client || supabase
+  try {
+    const { data: progress } = await sb
+      .from('user_progress')
+      .select('lesson_id')
+      .eq('user_id', userId)
+      .eq('completed', true)
+    const completedIds: number[] = (progress || []).map((p: any) => p.lesson_id)
+
+    const { data: scores } = await sb
+      .from('user_scores')
+      .select('score')
+      .eq('user_id', userId)
+    const userScores = scores || []
+
+    const { data: level } = await sb
+      .from('user_levels')
+      .select('current_level')
+      .eq('user_id', userId)
+      .maybeSingle()
+    const currentLevel = level?.current_level || 1
+
+    const { data: allAchievements } = await sb.from('achievements').select('*')
+    if (!allAchievements || allAchievements.length === 0) {
+      return { count: 0, list: [] }
+    }
+
+    for (const ach of allAchievements) {
+      let earned = false
+
+      switch (ach.slug) {
+        case 'primeiros-passos':
+          earned = completedIds.length >= 1
+          break
+        case 'estudioso-civico':
+          earned = completedIds.length >= 5
+          break
+        case 'cidadao-dedicado':
+          earned = completedIds.length >= 10
+          break
+        case 'mestre-da-republica': {
+          const mod12 = [101, 102, 103, 104, 105, 201, 202, 203, 204]
+          earned = mod12.every((id) => completedIds.includes(id))
+          break
+        }
+        case 'investidor-consciente': {
+          const mod3 = [301, 302, 303, 304, 305]
+          earned = mod3.every((id) => completedIds.includes(id))
+          break
+        }
+        case 'mente-critica':
+        case 'nota-maxima':
+          earned = userScores.some((s: any) => Number(s.score) >= 100)
+          break
+        case 'maratonista-do-saber':
+          earned = completedIds.length >= 24
+          break
+        case 'questionador-perspicaz':
+          earned = userScores.length >= 10
+          break
+        case 'economista-popular': {
+          const mod4 = [401, 402, 403, 404, 405]
+          earned = mod4.every((id) => completedIds.includes(id))
+          break
+        }
+        case 'detector-fake-news': {
+          const mod5 = [501, 502, 503, 504, 505]
+          earned = mod5.every((id) => completedIds.includes(id))
+          break
+        }
+        case 'nivel-5':
+          earned = currentLevel >= 5
+          break
+      }
+
+      if (earned) {
+        await sb.from('user_achievements').upsert(
+          {
+            user_id: userId,
+            achievement_id: ach.id,
+            progress: 100,
+            earned_date: new Date().toISOString(),
+          },
+          { onConflict: 'user_id,achievement_id' }
+        )
+      }
+    }
+
+    const { data: userAch } = await sb
+      .from('user_achievements')
+      .select('*, achievements(*)')
+      .eq('user_id', userId)
+
+    const list: UserAchievement[] = (userAch || []).map((ua: any) => ({
+      id: ua.achievements?.id || ua.achievement_id,
+      name: ua.achievements?.name || 'Conquista Cívica',
+      slug: ua.achievements?.slug || '',
+      description: ua.achievements?.description || '',
+      icon_emoji: ua.achievements?.icon_emoji || 'medal',
+      points: ua.achievements?.points || 0,
+      category: ua.achievements?.category || 'geral',
+      earned_date: ua.earned_date || ua.created_at,
+    }))
+
+    return { count: list.length, list }
+  } catch (err) {
+    console.warn('Erro ao sincronizar conquistas do usuário:', err)
+    return { count: 0, list: [] }
+  }
+}
+
+// 5. Marca uma lição como concluída e concede XP
 export async function markLessonCompleted(lessonId: number): Promise<{
   success: boolean
   xpEarned: number
@@ -349,9 +478,11 @@ export async function markLessonCompleted(lessonId: number): Promise<{
     // Só concede XP na primeira conclusão
     if (!alreadyCompleted) {
       await addXpToUser(user.id, XP_REWARD)
+      await syncUserAchievements(user.id)
       return { success: true, xpEarned: XP_REWARD }
     }
 
+    await syncUserAchievements(user.id)
     return { success: true, xpEarned: 0, alreadyCompleted: true }
   } catch (err) {
     console.warn('Erro ao marcar lição como concluída:', err)
@@ -359,7 +490,7 @@ export async function markLessonCompleted(lessonId: number): Promise<{
   }
 }
 
-// 5. Salva resultado de Quiz, pontuação e concede XP proporcional
+// 6. Salva resultado de Quiz, pontuação e concede XP proporcional
 export async function saveQuizScore(
   lessonId: number,
   score: number,
@@ -379,6 +510,7 @@ export async function saveQuizScore(
       .eq('lesson_id', lessonId)
       .maybeSingle()
 
+    const hasPrevious = !!existingScore
     const previousBest = Number(existingScore?.score ?? 0)
 
     // Salva pontuação (mantém a melhor nota)
@@ -408,9 +540,19 @@ export async function saveQuizScore(
       )
     }
 
-    // XP: 30 base + metade da nota (máx ~80 XP com 100%)
-    const xpEarned = Math.round(30 + score * 0.5)
-    await addXpToUser(user.id, xpEarned)
+    // Calcula XP de forma justa sem permitir duplicação descontrolada:
+    let xpEarned = 0
+    if (!hasPrevious) {
+      xpEarned = Math.round(30 + score * 0.5)
+    } else if (score > previousBest) {
+      xpEarned = Math.round((score - previousBest) * 0.5)
+    }
+
+    if (xpEarned > 0) {
+      await addXpToUser(user.id, xpEarned)
+    }
+
+    await syncUserAchievements(user.id)
 
     return { success: true, xpEarned }
   } catch (err) {
@@ -419,8 +561,9 @@ export async function saveQuizScore(
   }
 }
 
-// 6. Busca estatísticas do usuário para o Dashboard
-export async function getUserDashboardStats(userId: string): Promise<UserStats> {
+// 7. Busca estatísticas do usuário para o Dashboard (aceita client opcional do servidor)
+export async function getUserDashboardStats(userId: string, client?: any): Promise<UserStats> {
+  const sb = client || supabase
   let completedLessonIds: number[] = []
   let userScores: { score: number; lesson_id: number; created_at: string }[] = []
   let totalXp = 0
@@ -430,18 +573,18 @@ export async function getUserDashboardStats(userId: string): Promise<UserStats> 
 
   try {
     // 1. Busca progresso de lições
-    const { data: progress } = await supabase
+    const { data: progress } = await sb
       .from('user_progress')
       .select('lesson_id, completed, completion_date')
       .eq('user_id', userId)
       .eq('completed', true)
 
     if (progress) {
-      completedLessonIds = progress.map((p) => p.lesson_id)
+      completedLessonIds = progress.map((p: any) => p.lesson_id)
     }
 
     // 2. Busca scores de quizzes
-    const { data: scores } = await supabase
+    const { data: scores } = await sb
       .from('user_scores')
       .select('score, lesson_id, created_at')
       .eq('user_id', userId)
@@ -451,7 +594,7 @@ export async function getUserDashboardStats(userId: string): Promise<UserStats> 
     }
 
     // 3. Busca nível e XP
-    const { data: level } = await supabase
+    const { data: level } = await sb
       .from('user_levels')
       .select('*')
       .eq('user_id', userId)
@@ -485,6 +628,9 @@ export async function getUserDashboardStats(userId: string): Promise<UserStats> 
     ? Math.round(userScores.reduce((acc, s) => acc + (Number(s.score) || 0), 0) / userScores.length)
     : 0
 
+  // Sincroniza e busca conquistas reais do banco
+  const { count: achievementsCount, list: achievementsList } = await syncUserAchievements(userId, sb)
+
   // Progresso por módulo
   const modulesProgress = educationalModules.map((module) => {
     const modCompleted = module.lessons.filter((l) => completedLessonIds.includes(l.id)).length
@@ -501,14 +647,6 @@ export async function getUserDashboardStats(userId: string): Promise<UserStats> 
     }
   })
 
-  // Conquistas estimadas com base em marcos reais
-  let achievementsCount = 0
-  if (completedCount >= 1) achievementsCount += 1 // Primeiros Passos
-  if (completedCount >= 5) achievementsCount += 1 // Estudioso
-  if (completedCount >= 10) achievementsCount += 1 // Dedicado
-  if (averageScore >= 80) achievementsCount += 1 // Bom Desempenho
-  if (overallPercentage >= 50) achievementsCount += 1 // Meio Caminho
-
   return {
     completedLessonsCount: completedCount,
     totalLessonsCount: totalLessons,
@@ -520,6 +658,8 @@ export async function getUserDashboardStats(userId: string): Promise<UserStats> 
     averageScore,
     quizzesTaken: userScores.length,
     achievementsCount,
+    completedLessonIds,
+    achievementsList,
     modulesProgress,
     recentActivities: [],
   }

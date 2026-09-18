@@ -21,6 +21,8 @@ export default function LessonPage() {
   const [error, setError] = useState<string | null>(null)
   const [xpEarnedNotice, setXpEarnedNotice] = useState<number | null>(null)
   const [showAuthModal, setShowAuthModal] = useState(false)
+  // Controla se o quiz desta lição foi aprovado (≥70%)
+  const [quizPassed, setQuizPassed] = useState(false)
 
   useEffect(() => {
     async function loadLesson() {
@@ -40,6 +42,10 @@ export default function LessonPage() {
           setNextLesson(data.nextLesson)
           setIsCompleted(data.isCompleted)
           setIsAuthenticated(data.isAuthenticated)
+
+          // Verifica se o quiz desta lição já foi aprovado (persiste entre visitas)
+          const passed = localStorage.getItem(`quiz_passed_${data.lesson.id}`) === 'true'
+          setQuizPassed(passed)
         } else {
           setLesson(null)
           setModule(null)
@@ -269,7 +275,7 @@ export default function LessonPage() {
                 </p>
                 <p className="text-xs text-slate-500 mt-0.5">
                   {isCompleted
-                    ? 'Seu progresso está registrado. Você pode revisar ou avançar para o quiz.'
+                    ? 'Seu progresso está registrado. Agora faça o quiz para desbloquear a próxima lição.'
                     : isAuthenticated
                     ? 'Marque como concluída para registrar seu progresso e receber +20 XP.'
                     : 'Salve seu aprendizado e registre sua conquista na sua conta de cidadão.'}
@@ -290,6 +296,56 @@ export default function LessonPage() {
                 </span>
               )}
             </div>
+
+            {/* ─── CARD DE QUIZ OBRIGATÓRIO ─── */}
+            {nextLesson && !quizPassed && (
+              <div className="mt-6 rounded-2xl border-2 border-amber-300 bg-gradient-to-br from-amber-50 to-yellow-50 p-5 sm:p-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-amber-400 flex items-center justify-center flex-shrink-0 shadow-sm">
+                    <span className="text-2xl">🔒</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-base font-extrabold text-amber-900 mb-1">
+                      Próxima lição bloqueada — faça o Quiz primeiro!
+                    </h3>
+                    <p className="text-xs text-amber-800 leading-relaxed">
+                      Para avançar para a próxima lição, você precisa concluir o quiz desta aula com aproveitamento mínimo de <strong>70%</strong>. Isso garante que você realmente dominou o conteúdo antes de prosseguir.
+                    </p>
+                  </div>
+                  <Link
+                    href={`/quiz/${lesson.id}`}
+                    className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-sm shadow-md transition-all hover:scale-105"
+                  >
+                    📝 Fazer Quiz Agora
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {/* ─── DESBLOQUEADO: Quiz já aprovado ─── */}
+            {nextLesson && quizPassed && (
+              <div className="mt-6 rounded-2xl border-2 border-emerald-300 bg-gradient-to-br from-emerald-50 to-teal-50 p-5 sm:p-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-500 flex items-center justify-center flex-shrink-0 shadow-sm">
+                    <span className="text-2xl">🏆</span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-base font-extrabold text-emerald-900 mb-1">
+                      Quiz aprovado! Próxima lição desbloqueada
+                    </h3>
+                    <p className="text-xs text-emerald-800 leading-relaxed">
+                      Excelente! Você demonstrou domínio do conteúdo. Continue sua trilha de aprendizado!
+                    </p>
+                  </div>
+                  <Link
+                    href={`/lesson/${nextLesson.id}`}
+                    className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-br-green hover:bg-br-green-dark text-white font-extrabold text-sm shadow-md transition-all hover:scale-105"
+                  >
+                    Próxima Lição →
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Rodapé de Navegação entre Lições e Quiz */}
@@ -306,20 +362,33 @@ export default function LessonPage() {
             )}
 
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+              {/* Botão do Quiz — sempre visível */}
               <Link
                 href={`/quiz/${lesson.id}`}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-br-yellow hover:bg-yellow-400 text-br-blue font-extrabold text-sm shadow-sm transition-colors"
+                className={`w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-extrabold text-sm shadow-sm transition-colors ${
+                  quizPassed
+                    ? 'bg-emerald-100 hover:bg-emerald-200 text-emerald-800 border border-emerald-300'
+                    : 'bg-br-yellow hover:bg-yellow-400 text-br-blue'
+                }`}
               >
-                📝 Fazer Quiz desta Lição ({lesson.questions.length} questões)
+                {quizPassed ? '✓ Quiz Concluído' : `📝 Fazer Quiz (${lesson.questions.length} questões)`}
               </Link>
 
-              {nextLesson && (
+              {/* Próxima Lição — só aparece se quiz aprovado */}
+              {nextLesson && quizPassed && (
                 <Link
                   href={`/lesson/${nextLesson.id}`}
                   className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-br-blue hover:bg-br-blue-dark text-white font-bold text-sm shadow-sm transition-colors"
                 >
                   Próxima Lição →
                 </Link>
+              )}
+
+              {/* Indicador bloqueado — se houver próxima e não passou no quiz */}
+              {nextLesson && !quizPassed && (
+                <span className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-200 text-slate-500 font-bold text-sm cursor-not-allowed select-none border border-slate-300">
+                  🔒 Próxima Lição
+                </span>
               )}
             </div>
           </footer>

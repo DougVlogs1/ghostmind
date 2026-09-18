@@ -7,7 +7,7 @@ export default function HomePage() {
       {/* Hero Section com Banner Oficial Pense Brasil */}
       <section 
         className="relative overflow-hidden text-white min-h-[calc(100vh-64px)] flex flex-col justify-center py-20 lg:py-28 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("/images/banner.png")' }}
+        style={{ backgroundImage: 'url("/images/pense-brasil-banner-educacao-civica-cidadania-brasil.webp")' }}
       >
         {/* Overlay translúcido de alto contraste para leitura perfeita sobre a imagem */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-900/75 to-slate-950/80 backdrop-blur-[2px]"></div>
